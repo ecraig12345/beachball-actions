@@ -20,5 +20,5 @@ jobs:
           node-version: 16
           cache: yarn
       - run: yarn
-      - run: yarn workspaces run ci:package
+      - run: yarn package
       - uses: int128/release-typescript-action@v1
