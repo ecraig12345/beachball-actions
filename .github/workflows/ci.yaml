@@ -1,27 +1,14 @@
-name: hello-world
+name: CI
 
 on:
   push:
     branches: [main]
-    paths:
-      - hello-world/**
-      - '*.json'
-      - '*.js'
-      - .github/workflows/hello-world.yaml
   pull_request:
     branches: [main]
-    paths:
-      - hello-world/**
-      - '*.json'
-      - '*.js'
-      - .github/workflows/hello-world.yaml
 
 jobs:
   ts:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: hello-world
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -29,13 +16,14 @@ jobs:
           node-version: 16
           cache: yarn
       - run: yarn
-      - run: yarn lint
-      - run: yarn format-check
-      - run: yarn test
+      - run: yarn syncpack:check
+      - run: yarn format:check
       - run: yarn build
+      - run: yarn lint
+      - run: yarn test
       - run: yarn package
 
-      - name: e2e-test
+      - name: e2e - hello-world
         uses: ./hello-world
         with:
           name: foo

@@ -1,7 +1,6 @@
-# hello-world [![hello-world](https://github.com/int128/typescript-actions-monorepo/actions/workflows/hello-world.yaml/badge.svg)](https://github.com/int128/typescript-actions-monorepo/actions/workflows/hello-world.yaml)
+# hello-world
 
 This is a template of TypeScript Action.
-
 
 ## Getting Started
 
@@ -13,21 +12,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: int128/typescript-actions-monorepo/hello-world@v1
+      - uses: ecraig12345/beachball-actions/hello-world@v1
         with:
           name: hello
 ```
 
-
 ## Inputs
 
-| Name | Required | Default | Description
-|------|----------|---------|------------
-| `name` | `true` | - | example input
-
+| Name   | Required | Default | Description   |
+| ------ | -------- | ------- | ------------- |
+| `name` | `true`   | -       | example input |
 
 ## Outputs
 
-| Name | Description
-|------|------------
-| `example` | example output
+| Name      | Description    |
+| --------- | -------------- |
+| `example` | example output |

@@ -1,8 +1,8 @@
-# typescript-actions-monorepo
+# beachball-actions
 
-This is a template of monorepo for GitHub Actions written in TypeScript.
-Ready to develop on Visual Studio Code.
-It is based on https://github.com/int128/typescript-action.
+This monorepo contains GitHub Actions related to [Beachball](https://microsoft.github.io/beachball/).
+
+(Thanks to https://github.com/int128/typescript-actions-monorepo for the TypeScript actions monorepo template!)
 
 ## Features
 
@@ -15,13 +15,11 @@ It is based on https://github.com/int128/typescript-action.
 - Continuous update of dependencies using Renovate
 - Automated release
 
-
 ## Actions
 
-| Name | Description | Status
-|------|-------------|-------
-| [hello-world](hello-world) | Hello World | [![hello-world](https://github.com/int128/typescript-actions-monorepo/actions/workflows/hello-world.yaml/badge.svg)](https://github.com/int128/typescript-actions-monorepo/actions/workflows/hello-world.yaml)
-
+| Name                       | Description |
+| -------------------------- | ----------- |
+| [hello-world](hello-world) | Hello World |
 
 ## Development
 

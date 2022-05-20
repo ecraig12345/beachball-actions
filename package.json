@@ -1,21 +1,18 @@
 {
-  "name": "typescript-action",
+  "name": "beachball-actions-monorepo",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
-  },
-  "keywords": [
-    "actions",
-    "node",
-    "setup"
-  ],
-  "author": "",
   "license": "MIT",
-  "dependencies": {
-    "@actions/core": "1.8.2"
+  "scripts": {
+    "build": "lage build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --ext .js,.ts --cache",
+    "package": "lage package",
+    "prepare": "husky install",
+    "syncpack:check": "syncpack list-mismatches",
+    "syncpack": "syncpack fix-mismatches",
+    "test": "lage test"
   },
   "devDependencies": {
     "@tsconfig/node16": "1.0.2",
@@ -27,11 +24,24 @@
     "eslint": "8.15.0",
     "eslint-plugin-jest": "26.2.2",
     "eslint-plugin-prettier": "4.0.0",
+    "husky": "^8.0.1",
     "jest": "28.1.0",
     "js-yaml": "4.1.0",
+    "lage": "^0.41.0",
+    "lint-staged": "^12.4.1",
     "prettier": "2.6.2",
+    "syncpack": "^7.2.1",
     "ts-jest": "28.0.2",
     "typescript": "4.6.4"
+  },
+  "lint-staged": {
+    "*.!(js|ts)": [
+      "prettier --write"
+    ],
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "workspaces": [
     "*"
