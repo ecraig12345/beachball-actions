@@ -1,0 +1,12 @@
+name: tag test
+
+on:
+  push:
+    tags:
+      - test*
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ toJSON(github.event) }}"
