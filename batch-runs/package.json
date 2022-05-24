@@ -3,10 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "description": "Cancels this workflow run if a newer one is pending",
-  "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
-    "package": "ncc build --source-map --license licenses.txt",
+    "build": "tsc --declaration",
+    "package": "ncc build --source-map --license licenses.txt src/main.ts",
     "test": "jest"
   },
   "dependencies": {

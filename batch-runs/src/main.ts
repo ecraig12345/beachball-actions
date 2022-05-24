@@ -1,4 +1,4 @@
-import core from '@actions/core';
+import * as core from '@actions/core';
 import { cancelWorkflow } from './cancelWorkflow';
 import { checkForNewerRuns } from './checkForNewerRuns';
 
