@@ -1,0 +1,16 @@
+{
+  "name": "batch-runs-action",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Cancels this workflow run if a newer one is pending",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "package": "ncc build --source-map --license licenses.txt",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@actions/core": "1.8.2",
+    "@actions/github": "5.0.3"
+  }
+}

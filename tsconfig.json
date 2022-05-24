@@ -3,8 +3,7 @@
   "compilerOptions": {
     "noEmit": true,
     "allowJs": true,
-    "checkJs": true,
-    "module": "commonjs"
+    "checkJs": true
   },
   "include": ["./*.js", "./.eslintrc.js", "./*/*.js"],
   "exclude": ["node_modules"]

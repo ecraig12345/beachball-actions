@@ -7,8 +7,8 @@ on:
   push:
     branches:
       - main
-    tags:
-      - v*
+
+concurrency: ${{ github.ref }}
 
 jobs:
   tag:
@@ -21,4 +21,10 @@ jobs:
           cache: yarn
       - run: yarn
       - run: yarn package
+
+      # test the batch-builds action
+      - uses: ./batch-builds
+        with:
+          token: ${{ github.token }}
+
       - uses: int128/release-typescript-action@v1

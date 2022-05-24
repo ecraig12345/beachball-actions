@@ -1,0 +1,9 @@
+name: batch-runs
+description: Cancels this workflow run if any newer runs are pending for this branch
+inputs:
+  token:
+    description: GitHub token with "actions:write" permission
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
