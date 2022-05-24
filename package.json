@@ -4,15 +4,15 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "lage build",
+    "build": "lage build --verbose",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --ext .js,.ts --cache",
-    "package": "lage package",
+    "package": "lage package --verbose",
     "prepare": "husky install",
     "syncpack:check": "syncpack list-mismatches",
     "syncpack": "syncpack fix-mismatches",
-    "test": "lage test"
+    "test": "lage test --verbose"
   },
   "devDependencies": {
     "@tsconfig/node16": "1.0.2",
