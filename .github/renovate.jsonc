@@ -10,12 +10,6 @@
         // update all action.yaml in single pull request
         "@types/node"
       ]
-    },
-    {
-      "matchPackageNames": ["typescript"],
-      "minor": {
-        "dependencyDashboardApproval": true
-      }
     }
   ]
 }
