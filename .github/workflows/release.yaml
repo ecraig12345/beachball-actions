@@ -22,8 +22,8 @@ jobs:
       - run: yarn
       - run: yarn package
 
-      # test the batch-builds action
-      - uses: ./batch-builds
+      # test the batch-runs action
+      - uses: ./batch-runs
         with:
           token: ${{ github.token }}
 
