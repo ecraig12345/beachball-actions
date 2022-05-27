@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [main]
 
+concurrency: ${{ github.ref }}
+
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -23,7 +25,19 @@ jobs:
       - run: yarn test
       - run: yarn package
 
-      - name: e2e - hello-world
-        uses: ./hello-world
+      - name: e2e - batch-runs
+        uses: ./batch-runs
         with:
-          name: foo
+          # TODO test the output
+          mode: output
+          token: ${{ github.token }}
+
+      - name: e2e - should-release
+        uses: ./should-release
+        with:
+          # TODO test the output
+          mode: output
+          token: ${{ github.token }}
+          batch: true
+          # fake "change files" glob
+          change-glob: '*.json'

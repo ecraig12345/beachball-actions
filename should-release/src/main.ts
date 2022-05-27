@@ -1,12 +1,13 @@
 import * as core from '@actions/core';
 import * as glob from '@actions/glob';
-import { cancelWorkflow } from 'batch-runs-action/lib/cancelWorkflow';
 import { checkForNewerRuns } from 'batch-runs-action/lib/checkForNewerRuns';
+import { handleResult } from 'batch-runs-action/lib/handleResult';
 
 async function main() {
   const token = core.getInput('token', { required: true });
   const batch = core.getBooleanInput('batch');
   const changeGlob = core.getInput('change-glob');
+  const mode = core.getInput('mode');
 
   let shouldCancel = false;
 
@@ -18,9 +19,7 @@ async function main() {
     shouldCancel = true;
   }
 
-  if (shouldCancel) {
-    await cancelWorkflow(token);
-  }
+  await handleResult(shouldCancel, token, mode);
 }
 
 main().catch((e) => core.setFailed(e instanceof Error ? e.message : JSON.stringify(e)));

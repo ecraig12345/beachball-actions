@@ -4,22 +4,12 @@ This monorepo contains GitHub Actions related to [Beachball](https://microsoft.g
 
 (Thanks to https://github.com/int128/typescript-actions-monorepo for the TypeScript actions monorepo template!)
 
-## Features
-
-- Configuration for both yarn and vscode
-  - [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/)
-  - TypeScript
-  - Jest
-  - ESLint
-  - Prettier
-- Continuous update of dependencies using Renovate
-- Automated release
-
 ## Actions
 
-| Name                       | Description |
-| -------------------------- | ----------- |
-| [hello-world](hello-world) | Hello World |
+| Name                             | Description                                                                                         |
+| -------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [batch-runs](batch-runs)         | Cancels this workflow run if any newer runs are pending for this branch (not specific to Beachball) |
+| [should-release](should-release) | Determines whether a release workflow run is needed, and cancels it if not                          |
 
 ## Development
 
@@ -27,8 +17,3 @@ This monorepo contains GitHub Actions related to [Beachball](https://microsoft.g
 
 When a pull request is merged into main branch, a new minor release is created by GitHub Actions.
 See https://github.com/int128/release-typescript-action for details.
-
-### Dependency update
-
-You can enable Renovate to update the dependencies.
-This repository is shipped with the config https://github.com/int128/typescript-action-renovate-config.
