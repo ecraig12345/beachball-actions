@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import * as glob from '@actions/glob';
-import { checkForNewerRuns } from 'batch-runs-action/lib/checkForNewerRuns';
-import { handleResult } from 'batch-runs-action/lib/handleResult';
+import { checkForNewerRuns } from 'batch-runs/lib/checkForNewerRuns';
+import { handleResult } from 'batch-runs/lib/handleResult';
 
 async function main() {
   const token = core.getInput('token', { required: true });
