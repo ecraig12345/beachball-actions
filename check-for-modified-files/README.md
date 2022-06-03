@@ -1,0 +1,17 @@
+# check-for-modified-files
+
+Run this at the end of a workflow to determine if any files were modified, and if so, fail.
+
+One example of how this is useful is to prevent forgotten lock file updates.
+
+## Getting Started
+
+To run this action:
+
+```yaml
+jobs:
+  build:
+    steps:
+      # at the end of your workflow:
+      - uses: ecraig12345/beachball-actions/check-for-modified-files@v1
+```

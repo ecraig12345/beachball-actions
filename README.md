@@ -1,15 +1,23 @@
 # beachball-actions
 
-This monorepo contains GitHub Actions related to [Beachball](https://microsoft.github.io/beachball/).
+This monorepo contains GitHub Actions, mostly related to [Beachball](https://microsoft.github.io/beachball/), plus a few others.
 
 (Thanks to https://github.com/int128/typescript-actions-monorepo for the TypeScript actions monorepo template!)
 
 ## Actions
 
-| Name                             | Description                                                                                         |
-| -------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [batch-runs](batch-runs)         | Cancels this workflow run if any newer runs are pending for this branch (not specific to Beachball) |
-| [should-release](should-release) | Determines whether a release workflow run is needed, and cancels it if not                          |
+### General
+
+| Name                                                  | Description                                                             |
+| ----------------------------------------------------- | ----------------------------------------------------------------------- |
+| [batch-runs](batch-runs)                              | Cancels this workflow run if any newer runs are pending for this branch |
+| [check-for-modified-files](check-for-modified-files]) | Fails the build if it modified any files                                |
+
+### Beachball-specific
+
+| Name                             | Description                                                                |
+| -------------------------------- | -------------------------------------------------------------------------- |
+| [should-release](should-release) | Determines whether a release workflow run is needed, and cancels it if not |
 
 ## Development
 
