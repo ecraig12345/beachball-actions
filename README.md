@@ -15,9 +15,10 @@ This monorepo contains GitHub Actions, mostly related to [Beachball](https://mic
 
 ### Beachball-specific
 
-| Name                             | Description                                                                |
-| -------------------------------- | -------------------------------------------------------------------------- |
-| [should-release](should-release) | Determines whether a release workflow run is needed, and cancels it if not |
+| Name                                   | Description                                                                                              |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [install-beachball](install-beachball) | Globally installs the version of Beachball specified in the repo root `package.json`'s `devDependencies` |
+| [should-release](should-release)       | Determines whether a release workflow run is needed, and cancels it if not                               |
 
 ## Development
 

@@ -4,6 +4,8 @@ Run this at the end of a workflow to determine if any files were modified, and i
 
 One example of how this is useful is to prevent forgotten lock file updates.
 
+(Despite the repo name, this particular action is not specific to [Beachball](https://microsoft.github.io/beachball).)
+
 ## Getting Started
 
 To run this action:
