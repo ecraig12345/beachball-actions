@@ -65,3 +65,13 @@ jobs:
             if (result !== 'continue') {
               core.setFailed(`should-release returned "${result}" instead of "continue"`);
             }
+
+      - name: Batch releases
+        uses: ./batch-runs
+        with:
+          mode: cancel
+          token: ${{ github.token }}
+
+      - name: Release
+        if: ${{ github.head_ref == 'main' }}
+        uses: int128/release-typescript-action@v1
