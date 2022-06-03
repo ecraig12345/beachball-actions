@@ -25,6 +25,9 @@ jobs:
       - run: yarn test
       - run: yarn package
 
+      - name: e2e - install-beachball
+        uses: ./install-beachball
+
       - name: e2e - check-for-modified-files
         uses: ./check-for-modified-files
 
