@@ -40,12 +40,11 @@ jobs:
 
       - name: e2e - batch-runs result
         uses: actions/github-script@v6
-        env:
-          RESULT: ${{ steps.batchRuns.outputs.result }}
         with:
           script: |
-            if (process.env.RESULT !== 'continue') {
-              core.setFailed(`batch-runs returned "${process.env.RESULT}" instead of "continue");
+            const result = '${{ steps.batchRuns.outputs.result }}';
+            if (result !== 'continue') {
+              core.setFailed(`batch-runs returned "${result}" instead of "continue"`);
             }
 
       - name: e2e - should-release
@@ -60,10 +59,9 @@ jobs:
 
       - name: e2e - should-release result
         uses: actions/github-script@v6
-        env:
-          RESULT: ${{ steps.shouldRelease.outputs.result }}
         with:
           script: |
-            if (process.env.RESULT !== 'continue') {
-              core.setFailed(`should-release returned "${process.env.RESULT}" instead of "continue");
+            const result = '${{ steps.shouldRelease.outputs.result }}';
+            if (result !== 'continue') {
+              core.setFailed(`should-release returned "${result}" instead of "continue"`);
             }
