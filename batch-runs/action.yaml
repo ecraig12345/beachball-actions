@@ -12,4 +12,4 @@ outputs:
     description: Whether the run should "cancel" or "continue"
 runs:
   using: node16
-  main: ./dist/index.js
+  main: hello.js
