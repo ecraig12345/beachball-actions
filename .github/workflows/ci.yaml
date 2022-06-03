@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
 
-concurrency: ${{ github.ref }}
+concurrency: ${{ github.ref }}-ci
 
 jobs:
   ci:
@@ -33,17 +33,35 @@ jobs:
 
       - name: e2e - batch-runs
         uses: ./batch-runs
+        id: batchRuns
         with:
-          # TODO test the output
           mode: output
           token: ${{ github.token }}
 
+      - name: e2e - batch-runs result
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const result = '${{ steps.batchRuns.outputs.result }}';
+            if (result !== 'continue') {
+              core.setFailed(`batch-runs returned "${result}" instead of "continue");
+            }
+
       - name: e2e - should-release
         uses: ./should-release
+        id: shouldRelease
         with:
-          # TODO test the output
           mode: output
           token: ${{ github.token }}
           batch: true
           # fake "change files" glob
-          change-glob: '*.json'
+          change-glob: '**/*.json'
+
+      - name: e2e - should-release result
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const result = '${{ steps.shouldRelease.outputs.result }}';
+            if (result !== 'continue') {
+              core.setFailed(`should-release returned "${result}" instead of "continue");
+            }

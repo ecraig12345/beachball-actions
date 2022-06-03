@@ -8,7 +8,7 @@ on:
     branches:
       - main
 
-concurrency: ${{ github.ref }}
+concurrency: ${{ github.ref }}-release
 
 jobs:
   tag:
