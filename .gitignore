@@ -96,5 +96,4 @@ Thumbs.db
 
 # Ignore built ts files
 lib/
-# Don't ignore root "dist" (sad hack for testing)
-*/dist
+dist/

@@ -17,14 +17,6 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-
-      - name: fake file
-        run: |
-          mkdir ./batch-runs/dist
-          echo "console.log('fake')" > ./batch-runs/dist/index.js
-      - name: test
-        uses: ./batch-runs
-
       - run: yarn
       - run: yarn syncpack:check
       - run: yarn format:check
@@ -77,7 +69,7 @@ jobs:
               core.setFailed(`should-release returned "${result}" instead of "continue"`);
             }
 
-      - name: e2e - batch-runs
+      - name: Batch releases
         uses: ./batch-runs
         with:
           mode: cancel
