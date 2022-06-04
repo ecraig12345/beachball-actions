@@ -1,6 +1,6 @@
 {
   "name": "beachball-actions-common",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Utilities for Beachball-related GitHub Actions",
   "author": "Elizabeth Craig <elcraig@microsoft.com>",
   "repository": {
