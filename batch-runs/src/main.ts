@@ -14,9 +14,9 @@ const main = async (): Promise<void> => {
 main().catch((e) => {
   if (e instanceof Error) {
     console.error(e.stack);
-    console.error(JSON.stringify(e, null, 2));
+    console.error(JSON.stringify(e));
     core.setFailed(e.message);
   } else {
-    core.setFailed(JSON.stringify(e, null, 2));
+    core.setFailed(JSON.stringify(e));
   }
 });
