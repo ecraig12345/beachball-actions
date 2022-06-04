@@ -36,7 +36,7 @@ jobs:
         id: batchRuns
         with:
           mode: output
-          token: fake
+          token: ${{ github.token }}
 
       - name: e2e - batch-runs result
         uses: actions/github-script@v6

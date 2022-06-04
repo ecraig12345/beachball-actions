@@ -11,4 +11,11 @@ const main = async (): Promise<void> => {
   await handleResult(shouldCancel, token, mode);
 };
 
-main().catch((e) => core.setFailed(e instanceof Error ? e.message : JSON.stringify(e)));
+main().catch((e) => {
+  if (e instanceof Error) {
+    console.error(e.stack);
+    core.setFailed(e.message);
+  } else {
+    core.setFailed(JSON.stringify(e));
+  }
+});
