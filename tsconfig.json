@@ -5,6 +5,6 @@
     "allowJs": true,
     "checkJs": true
   },
-  "include": ["./*.js", "./.eslintrc.js", "./*/*.js"],
-  "exclude": ["node_modules"]
+  "include": ["./*.js", "./*/*.js", "./packages/*/*.js", "./packages/*/.*.js"],
+  "exclude": ["**/node_modules"]
 }
