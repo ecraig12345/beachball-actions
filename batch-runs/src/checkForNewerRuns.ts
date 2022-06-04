@@ -10,9 +10,12 @@ export async function checkForNewerRuns(token: string): Promise<boolean> {
   const octokit = github.getOctokit(token);
 
   const branchName = process.env.GITHUB_REF_NAME!;
+  const workflowId = process.env.GITHUB_WORKFLOW!;
+  console.log(`Getting runs of workflow "${workflowId}" for branch "${branchName}"`);
+
   const result = await octokit.rest.actions.listWorkflowRuns({
     ...github.context.repo,
-    workflow_id: process.env.GITHUB_WORKFLOW || '',
+    workflow_id: workflowId,
     status: 'pending' as any, // eslint-disable-line -- "pending" is valid but missing from types
     branch: branchName,
   });
