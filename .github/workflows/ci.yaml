@@ -36,7 +36,7 @@ jobs:
         id: batchRuns
         with:
           mode: output
-          # token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: e2e - batch-runs result
         uses: actions/github-script@v6
@@ -52,7 +52,7 @@ jobs:
         id: shouldRelease
         with:
           mode: output
-          token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           batch: true
           # fake "change files" glob
           change-glob: '**/*.json'
@@ -70,7 +70,7 @@ jobs:
         uses: ./batch-runs
         with:
           mode: cancel
-          token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Release
       #   if: ${{ github.head_ref == 'main' }}
