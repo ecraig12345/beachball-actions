@@ -88,5 +88,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Release
-        if: ${{ github.ref_name == 'main' && steps.shouldRelease.outputs.shouldCancel == 'no' }}
+        if: ${{ github.ref_name == 'main' && steps.batchRuns.outputs.shouldCancel == 'no' }}
         uses: int128/release-typescript-action@v1
