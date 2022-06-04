@@ -72,6 +72,8 @@ jobs:
             const shouldCancel = '${{ steps.shouldRelease.outputs.shouldCancel }}';
             if (shouldCancel !== 'yes' && shouldCancel !== 'no') {
               core.setFailed(`should-release returned "${shouldCancel}" instead of "yes" or "no"`);
+            } else {
+              core.info(`should-release returned shouldCancel: "${shouldCancel}"`);
             }
 
       # - name: Publish to npm
