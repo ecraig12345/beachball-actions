@@ -39,8 +39,8 @@ jobs:
       - name: e2e - check-for-modified-files
         uses: ./check-for-modified-files
 
-      - name: ls
-        run: ls ./batch-runs/dist
+      - name: cat
+        run: cat ./batch-runs/dist/index.js
 
       - name: e2e - batch-runs
         uses: ./batch-runs
