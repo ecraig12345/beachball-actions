@@ -31,15 +31,12 @@ jobs:
       # - name: e2e - check-for-modified-files
       #   uses: ./check-for-modified-files
 
-      - name: cat
-        run: cat ./batch-runs/dist/index.js
-
       - name: e2e - batch-runs
         uses: ./batch-runs
         id: batchRuns
         with:
           mode: output
-          token: ${{ github.token }}
+          # token: ${{ github.token }}
 
       - name: e2e - batch-runs result
         uses: actions/github-script@v6
