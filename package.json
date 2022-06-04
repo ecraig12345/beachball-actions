@@ -41,9 +41,6 @@
     "*"
   ],
   "beachball": {
-    "scope": [
-      "beachball-actions-common"
-    ],
     "branch": "main",
     "tag": "latest",
     "ignorePatterns": [

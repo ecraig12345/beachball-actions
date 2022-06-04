@@ -9,6 +9,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "beachball-actions-common": "0.1.0"
+    "beachball-actions-common": "0.1.1"
   }
 }
