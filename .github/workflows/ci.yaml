@@ -18,18 +18,18 @@ jobs:
           node-version: 16
           cache: yarn
       - run: yarn
-      - run: yarn syncpack:check
-      - run: yarn format:check
-      - run: yarn build
-      - run: yarn lint
-      - run: yarn test
+      # - run: yarn syncpack:check
+      # - run: yarn format:check
+      # - run: yarn build
+      # - run: yarn lint
+      # - run: yarn test
       - run: yarn package
 
-      - name: e2e - install-beachball
-        uses: ./install-beachball
+      # - name: e2e - install-beachball
+      #   uses: ./install-beachball
 
-      - name: e2e - check-for-modified-files
-        uses: ./check-for-modified-files
+      # - name: e2e - check-for-modified-files
+      #   uses: ./check-for-modified-files
 
       - name: cat
         run: cat ./batch-runs/dist/index.js
