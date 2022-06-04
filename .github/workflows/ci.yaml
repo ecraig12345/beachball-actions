@@ -88,7 +88,8 @@ jobs:
           git config -l
           git config user.name "Elizabeth Craig"
           git config user.email "elcraig@microsoft.com"
-          git config http.https://github.com/.extraheader "AUTHORIZATION: basic $GH_TOKEN"
+          git config --unset http.https://github.com/.extraheader
+          git remote set-url origin https://$GITHUB_ACTOR:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git
           yarn beachball publish -b origin/main -y -n $NPM_TOKEN
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
