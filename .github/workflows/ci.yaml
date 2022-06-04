@@ -36,10 +36,10 @@ jobs:
 
       - name: e2e - batch-runs
         uses: ./batch-runs
-        id: batchRuns
-        with:
-          mode: output
-          token: ${{ github.token }}
+        # id: batchRuns
+        # with:
+        #   mode: output
+        #   token: ${{ github.token }}
 
       - name: e2e - batch-runs result
         uses: actions/github-script@v6
