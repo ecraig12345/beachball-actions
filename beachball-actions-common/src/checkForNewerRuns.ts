@@ -1,16 +1,19 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
-import { RequestError } from '@octokit/request-error';
+import { getOctokit } from './getOctokit';
+import { logGithubRequestError } from './logGithubRequestError';
 
-export async function checkForNewerRuns(token: string): Promise<boolean> {
+/**
+ * Check for newer pending runs of this workflow against the current branch.
+ * Assumes a required `token` input for the action.
+ */
+export async function checkForNewerRuns(): Promise<boolean> {
   if (process.env.GITHUB_REF_TYPE !== 'branch') {
     core.setFailed('This action is only supported for runs against branches.');
     process.exit(1);
   }
 
-  console.log(JSON.stringify(github.context, null, 2));
-
-  const octokit = github.getOctokit(token, { log: console });
+  const octokit = getOctokit();
 
   const branchName = process.env.GITHUB_REF_NAME!;
   const workflowId = process.env.GITHUB_WORKFLOW!;
@@ -25,17 +28,7 @@ export async function checkForNewerRuns(token: string): Promise<boolean> {
     });
     thisBranchRunCount = result.data.total_count;
   } catch (err) {
-    const description = `runs of workflow "${workflowId}" for branch "${branchName}"`;
-    core.error(err as Error);
-    if (err instanceof RequestError) {
-      core.setFailed(
-        `Getting ${description} from "${err.request.url}" failed with code ${err.status}`,
-      );
-    } else {
-      core.setFailed(
-        `Error getting ${description}: ${err instanceof Error ? err.message : JSON.stringify(err)}`,
-      );
-    }
+    logGithubRequestError(err, `runs of workflow "${workflowId}" for branch "${branchName}"`);
     process.exit(1);
   }
 

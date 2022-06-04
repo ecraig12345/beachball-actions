@@ -12,25 +12,31 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - run: printenv | sort
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: yarn
-      - run: yarn
-      # - run: yarn syncpack:check
-      # - run: yarn format:check
-      # - run: yarn build
-      # - run: yarn lint
-      # - run: yarn test
+
+      - run: yarn --frozen-lockfile --ignore-scripts
+
+      - run: yarn syncpack:check
+      - run: yarn format:check
+      - run: yarn beachball check
+
+      - run: yarn build
+      - run: yarn lint
+      - run: yarn test
       - run: yarn package
 
-      # - name: e2e - install-beachball
-      #   uses: ./install-beachball
+      - name: e2e - install-beachball
+        uses: ./install-beachball
 
-      # - name: e2e - check-for-modified-files
-      #   uses: ./check-for-modified-files
+      - name: e2e - check-for-modified-files
+        uses: ./check-for-modified-files
 
       - name: e2e - batch-runs
         uses: ./batch-runs
@@ -41,11 +47,14 @@ jobs:
 
       - name: e2e - batch-runs result
         uses: actions/github-script@v6
+        if: ${{ steps.batchRuns.outputs.shouldCancel != 'no' }}
         with:
           script: |
-            const result = '${{ steps.batchRuns.outputs.result }}';
-            if (result !== 'continue') {
-              core.setFailed(`batch-runs returned "${result}" instead of "continue"`);
+            const shouldCancel = '${{ steps.batchRuns.outputs.shouldCancel }}';
+            if (shouldCancel === 'yes' && process.env.GITHUB_REF_NAME === 'main') {
+              core.info('Newer run is pending for main');
+            } else {
+              core.setFailed(`batch-runs unexpectedly returned "${shouldCancel}"`);
             }
 
       - name: e2e - should-release
@@ -55,24 +64,27 @@ jobs:
           mode: output
           token: ${{ github.token }}
           batch: true
-          # fake "change files" glob
-          change-glob: '**/*.json'
 
       - name: e2e - should-release result
         uses: actions/github-script@v6
         with:
           script: |
-            const result = '${{ steps.shouldRelease.outputs.result }}';
-            if (result !== 'continue') {
-              core.setFailed(`should-release returned "${result}" instead of "continue"`);
+            const shouldCancel = '${{ steps.shouldRelease.outputs.shouldCancel }}';
+            if (shouldCancel !== 'yes' && shouldCancel !== 'no') {
+              core.setFailed(`should-release returned "${shouldCancel}" instead of "yes" or "no"`);
             }
 
-      - name: Batch releases
-        uses: ./batch-runs
-        with:
-          mode: cancel
-          token: ${{ github.token }}
+      # - name: Publish to npm
+      #   if: ${{ github.ref_name == 'main' && steps.shouldRelease.outputs.shouldCancel == 'no' }}
+      #   run: |
+      #     git config user.name "Elizabeth Craig"
+      #     git config user.email "elcraig@microsoft.com"
+      #     git remote set-url origin https://$GITHUB_ACTOR:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git
+      #     yarn beachball publish -b origin/main -y -n $NPM_TOKEN
+      #   env:
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       # - name: Release
-      #   if: ${{ github.head_ref == 'main' }}
+      #   if: ${{ github.ref_name == 'main' && steps.shouldRelease.outputs.shouldCancel == 'no' }}
       #   uses: int128/release-typescript-action@v1

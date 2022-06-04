@@ -1,32 +1,23 @@
 import * as core from '@actions/core';
 import * as glob from '@actions/glob';
-import { checkForNewerRuns } from 'batch-runs/lib/checkForNewerRuns';
-import { handleResult } from 'batch-runs/lib/handleResult';
+import { checkForNewerRuns, maybeCancelRun, onUnhandledError } from 'beachball-actions-common';
 
 async function main() {
-  const token = core.getInput('token', { required: true });
+  // Note: action inputs "token" and "mode" are read by utilities
   const batch = core.getBooleanInput('batch');
-  const changeGlob = core.getInput('change-glob');
-  const mode = core.getInput('mode');
+  const changeGlob = core.getInput('changeGlob');
 
   let shouldCancel = false;
 
   const changeFiles = await (await glob.create(changeGlob)).glob();
-  if (changeFiles.length > 0) {
+  if (changeFiles.length === 0) {
     shouldCancel = true;
     core.info('No change files found.');
-  } else if (batch && (await checkForNewerRuns(token))) {
+  } else if (batch && (await checkForNewerRuns())) {
     shouldCancel = true;
   }
 
-  await handleResult(shouldCancel, token, mode);
+  await maybeCancelRun(shouldCancel);
 }
 
-main().catch((e) => {
-  if (e instanceof Error) {
-    console.error(e.stack);
-    core.setFailed(e.message);
-  } else {
-    core.setFailed(JSON.stringify(e));
-  }
-});
+main().catch(onUnhandledError);

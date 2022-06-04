@@ -41,6 +41,6 @@ This action may seem redundant with `concurrency`'s `cancel-in-progress` option 
 
 ## Outputs
 
-| Name     | Type                   | Description                                         |
-| -------- | ---------------------- | --------------------------------------------------- |
-| `result` | `cancel` \| `continue` | Whether the workflow should be canceled or continue |
+| Name           | Type          | Description                             |
+| -------------- | ------------- | --------------------------------------- |
+| `shouldCancel` | `yes` \| `no` | Whether the workflow should be canceled |

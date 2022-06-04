@@ -1,22 +1,10 @@
-import * as core from '@actions/core';
-import { handleResult } from './handleResult';
-import { checkForNewerRuns } from './checkForNewerRuns';
+import { checkForNewerRuns, maybeCancelRun, onUnhandledError } from 'beachball-actions-common';
 
 const main = async (): Promise<void> => {
-  const token = core.getInput('token', { required: true });
-  const mode = core.getInput('mode');
+  // Note: action inputs "token" and "mode" are read by utilities
+  const shouldCancel = await checkForNewerRuns();
 
-  const shouldCancel = await checkForNewerRuns(token);
-
-  await handleResult(shouldCancel, token, mode);
+  await maybeCancelRun(shouldCancel);
 };
 
-main().catch((e) => {
-  if (e instanceof Error) {
-    console.error(e.stack);
-    console.error(JSON.stringify(e));
-    core.setFailed(e.message);
-  } else {
-    core.setFailed(JSON.stringify(e));
-  }
-});
+main().catch(onUnhandledError);

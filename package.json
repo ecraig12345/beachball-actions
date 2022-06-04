@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "lage build --verbose",
+    "change": "beachball change",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --ext .js,.ts --cache",
@@ -31,9 +32,24 @@
     "lage": "0.41.0",
     "lint-staged": "12.4.2",
     "prettier": "2.6.2",
+    "rimraf": "3.0.2",
     "syncpack": "7.2.1",
     "ts-jest": "28.0.3",
     "typescript": "4.7.2"
+  },
+  "workspaces": [
+    "*"
+  ],
+  "beachball": {
+    "scope": [
+      "beachball-actions-common"
+    ],
+    "branch": "main",
+    "tag": "latest",
+    "ignorePatterns": [
+      "**/*.test.ts",
+      "**/jest.config.js"
+    ]
   },
   "lint-staged": {
     "*.!(js|ts)": [
@@ -43,8 +59,5 @@
       "eslint --fix",
       "prettier --write"
     ]
-  },
-  "workspaces": [
-    "*"
-  ]
+  }
 }
