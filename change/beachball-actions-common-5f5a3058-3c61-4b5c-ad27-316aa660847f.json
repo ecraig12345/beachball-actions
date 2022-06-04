@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Initial publish",
-  "packageName": "beachball-actions-common",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

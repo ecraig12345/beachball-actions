@@ -1,0 +1,20 @@
+{
+  "name": "beachball-actions-common",
+  "entries": [
+    {
+      "date": "Sat, 04 Jun 2022 04:49:57 GMT",
+      "tag": "beachball-actions-common_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "beachball-actions-common",
+            "commit": "f55611b41cb6c908b5fe70f9a7b8a14b14ce3f49",
+            "comment": "Initial publish"
+          }
+        ]
+      }
+    }
+  ]
+}
