@@ -27,7 +27,7 @@ export async function maybeCancelRun(shouldCancel: boolean): Promise<void> {
 
   core.info(`Workflow run should ${shouldCancel ? 'cancel' : 'continue'}`);
 
-  if (shouldCancel) {
+  if (shouldCancel && mode === 'cancel') {
     core.info('Canceling this workflow run');
 
     const workflowRun = Number(process.env.GITHUB_RUN_ID);
