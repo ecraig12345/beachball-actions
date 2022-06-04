@@ -18,9 +18,9 @@ export async function handleResult(
   const result = shouldCancel ? 'cancel' : 'continue';
   core.info(`Workflow run should ${result}`);
 
-  if (mode === 'output') {
-    core.setOutput('result', result);
-  } else {
+  core.setOutput('result', result);
+
+  if (result === 'cancel') {
     core.info('Canceling this workflow run');
 
     const octokit = github.getOctokit(token);
