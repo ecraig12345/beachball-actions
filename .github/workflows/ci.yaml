@@ -36,10 +36,10 @@ jobs:
 
       - name: e2e - batch-runs
         uses: ./batch-runs
-        # id: batchRuns
-        # with:
-        #   mode: output
-        #   token: ${{ github.token }}
+        id: batchRuns
+        with:
+          mode: output
+          token: ${{ github.token }}
 
       - name: e2e - batch-runs result
         uses: actions/github-script@v6
@@ -75,6 +75,6 @@ jobs:
           mode: cancel
           token: ${{ github.token }}
 
-      - name: Release
-        if: ${{ github.head_ref == 'main' }}
-        uses: int128/release-typescript-action@v1
+      # - name: Release
+      #   if: ${{ github.head_ref == 'main' }}
+      #   uses: int128/release-typescript-action@v1
