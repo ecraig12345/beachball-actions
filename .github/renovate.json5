@@ -2,6 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base", "github>int128/typescript-action-renovate-config"],
   "allowPostUpgradeCommandTemplating": true,
+  "automerge": false,
+  "postUpdateOptions": ["yarnDedupeHighest"],
   "postUpgradeTasks": {
     "commands": [
       "git add --all",
