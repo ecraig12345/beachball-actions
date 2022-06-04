@@ -1,5 +1,7 @@
-dist/
 lib/
+# Don't ignore root "dist" (sad hack for testing)
+*/dist
+
 node_modules/
 
 .*ignore

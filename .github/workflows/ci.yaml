@@ -17,6 +17,8 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+      - name: test
+        uses: ./batch-runs
       - run: yarn
       - run: yarn syncpack:check
       - run: yarn format:check
@@ -66,7 +68,7 @@ jobs:
               core.setFailed(`should-release returned "${result}" instead of "continue"`);
             }
 
-      - name: Batch releases
+      - name: e2e - batch-runs
         uses: ./batch-runs
         with:
           mode: cancel
