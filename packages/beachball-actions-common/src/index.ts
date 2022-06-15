@@ -1,5 +1,5 @@
+export { cancelRun } from './cancelRun';
 export { checkForNewerRuns } from './checkForNewerRuns';
-export { getOctokit } from './getOctokit';
+export { getEnumInput } from './getEnumInput';
 export { logGithubRequestError } from './logGithubRequestError';
-export { maybeCancelRun } from './maybeCancelRun';
 export { onUnhandledError } from './onUnhandledError';

@@ -7,14 +7,14 @@ Determines whether a release workflow run is needed, and cancels it if not (unle
 
 ## Getting Started
 
-To run this action:
+The most basic way to run this action is as follows. However, this will result in a "red" build if the run is canceled.
 
 ```yaml
 # This setting is required if `batch: true` is set (see below)
 concurrency: ${{ github.ref }}
 
 jobs:
-  build:
+  release:
     steps:
       # You must check out code before running this action
       - uses: actions/checkout@v3
@@ -23,6 +23,34 @@ jobs:
         with:
           token: ${{ github.token }}
           batch: true
+```
+
+To get a "green" build, it's necessary to split the `should-release` action into a separate job:
+
+```yaml
+concurrency: ${{ github.ref }}
+
+jobs:
+  prerelease:
+    outputs:
+      shouldRelease: ${{ steps.shouldRelease.outputs.shouldRelease }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: ecraig12345/beachball-actions/should-release@v1
+        id: shouldRelease
+        with:
+          token: ${{ github.token }}
+          batch: true
+          mode: output
+
+  release:
+    needs: prerelease
+    if: ${{ needs.prerelease.outputs.shouldRelease == 'yes' }}
+    steps:
+      # your steps here
 ```
 
 ## Inputs
@@ -48,6 +76,6 @@ concurrency: ${{ github.ref }}
 
 ## Outputs
 
-| Name           | Type          | Description                             |
-| -------------- | ------------- | --------------------------------------- |
-| `shouldCancel` | `yes` \| `no` | Whether the workflow should be canceled |
+| Name            | Type          | Description                         |
+| --------------- | ------------- | ----------------------------------- |
+| `shouldRelease` | `yes` \| `no` | Whether the release should continue |

@@ -75,15 +75,15 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const shouldCancel = '${{ steps.shouldRelease.outputs.shouldCancel }}';
-            if (shouldCancel !== 'yes' && shouldCancel !== 'no') {
-              core.setFailed(`should-release returned "${shouldCancel}" instead of "yes" or "no"`);
+            const shouldRelease = '${{ steps.shouldRelease.outputs.shouldRelease }}';
+            if (shouldRelease !== 'yes' && shouldRelease !== 'no') {
+              core.setFailed(`should-release returned "${shouldRelease}" instead of "yes" or "no"`);
             } else {
-              core.info(`should-release returned shouldCancel: "${shouldCancel}"`);
+              core.info(`should-release returned shouldRelease: "${shouldRelease}"`);
             }
 
       - name: Publish to npm
-        if: ${{ github.ref_name == 'main' && steps.shouldRelease.outputs.shouldCancel == 'no' }}
+        if: ${{ github.ref_name == 'main' && steps.shouldRelease.outputs.shouldRelease == 'yes' }}
         run: |
           git config -l
           git config user.name "Elizabeth Craig"

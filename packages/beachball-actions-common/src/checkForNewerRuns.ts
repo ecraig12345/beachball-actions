@@ -1,19 +1,18 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
-import { getOctokit } from './getOctokit';
 import { logGithubRequestError } from './logGithubRequestError';
 
 /**
  * Check for newer pending runs of this workflow against the current branch.
  * Assumes a required `token` input for the action.
  */
-export async function checkForNewerRuns(): Promise<boolean> {
+export async function checkForNewerRuns(token: string): Promise<boolean> {
   if (process.env.GITHUB_REF_TYPE !== 'branch') {
     core.setFailed('This action is only supported for runs against branches.');
     process.exit(1);
   }
 
-  const octokit = getOctokit();
+  const octokit = github.getOctokit(token, { log: console });
 
   const branchName = process.env.GITHUB_REF_NAME!;
   const runId = Number(process.env.GITHUB_RUN_ID!);

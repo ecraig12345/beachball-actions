@@ -14,7 +14,7 @@ concurrency: ${{ github.ref }}
 
 ## Getting Started
 
-To run this action:
+The most basic way to run this action is as follows. However, this will result in a "red" build if the run is canceled.
 
 ```yaml
 # This setting is required (the exact string can vary but must include the branch name)
@@ -26,6 +26,28 @@ jobs:
       - uses: ecraig12345/beachball-actions/batch-runs@v1
         with:
           token: ${{ github.token }}
+```
+
+To get a "green" build, it's necessary to split the `batch-runs` action into a separate job:
+
+```yaml
+concurrency: ${{ github.ref }}
+
+jobs:
+  prebuild:
+    outputs:
+      shouldCancel: ${{ steps.shouldCancel.outputs.shouldCancel }}
+    steps:
+      - uses: ecraig12345/beachball-actions/batch-runs@v1
+        id: shouldCancel
+        with:
+          token: ${{ github.token }}
+
+  build:
+    needs: prebuild
+    if: ${{ needs.prebuild.outputs.shouldCancel == 'no' }}
+    steps:
+      # your steps here
 ```
 
 ## Inputs
