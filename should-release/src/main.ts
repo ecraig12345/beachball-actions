@@ -10,7 +10,7 @@ import {
 async function main() {
   const batch = core.getBooleanInput('batch');
   const changeGlob = core.getInput('changeGlob');
-  const mode = getEnumInput('mode', ['cancel', 'continue'] as const, 'cancel');
+  const mode = getEnumInput('mode', ['cancel', 'output'] as const, 'cancel');
   const token = core.getInput('token', { required: true });
 
   let shouldRelease = true;
