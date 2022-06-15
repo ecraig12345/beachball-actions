@@ -2,6 +2,21 @@
   "name": "beachball-actions-common",
   "entries": [
     {
+      "date": "Wed, 15 Jun 2022 20:43:51 GMT",
+      "tag": "beachball-actions-common_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "beachball-actions-common",
+            "commit": "7420b3edc8ee2bbb390b159e143236c5d339d6a0",
+            "comment": "Remove getOctokit and maybeCancelRun, add cancelRun and getEnumInput"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 04 Jun 2022 05:16:34 GMT",
       "tag": "beachball-actions-common_v0.1.4",
       "version": "0.1.4",

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Remove getOctokit and maybeCancelRun, add cancelRun and getEnumInput",
-  "packageName": "beachball-actions-common",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
