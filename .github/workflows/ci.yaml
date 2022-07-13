@@ -12,6 +12,8 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ github.ref }}
+
       # use the "published" action upfront to actually batch runs
       - name: batch runs
         uses: ecraig12345/beachball-actions/batch-runs@v1

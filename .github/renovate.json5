@@ -12,6 +12,9 @@
     "fileFilters": ["**/*"],
     "executionMode": "update"
   },
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "matchPaths": ["*/**"],
