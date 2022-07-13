@@ -6,17 +6,16 @@ on:
   pull_request:
     branches: [main]
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency: ${{ github.ref }}-ci
 
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.ref }}
-
       # use the "published" action upfront to actually batch runs
       - name: batch runs
         uses: ecraig12345/beachball-actions/batch-runs@v1
+        if: github.ref == 'refs/heads/main'
         with:
           token: ${{ github.token }}
 
