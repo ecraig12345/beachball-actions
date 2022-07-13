@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update dependency @actions/core to v1.9.0 (packages/beachball-actions-common)",
+  "packageName": "beachball-actions-common",
+  "email": "bot@renovateapp.com",
+  "dependentChangeType": "patch"
+}
