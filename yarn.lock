@@ -3944,7 +3944,7 @@ parse-path@^5.0.0:
   dependencies:
     protocols "^2.0.0"
 
-parse-url@6.0.1, parse-url@^6.0.0:
+parse-url@^6.0.0:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/parse-url/-/parse-url-6.0.1.tgz#5aa13fbf4240ee5c71ff8891bd470311ff78b209"
   integrity sha512-EY1/ifgf9BnizQoS09a7xbUI7LOzqUsLgmY/5xe+W3XVpsbARDZmmrjPqyDx0mdioZPBpKbeTisAHrLLndX/Qw==
