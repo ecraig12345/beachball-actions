@@ -21,16 +21,16 @@
     //     "@types/node"
     //   ]
     // },
-    {
-      "matchPackageNames": ["jest", "ts-jest"],
-      "matchPackagePrefixes": ["jest-"],
-      "groupName": "jest"
-    },
-    {
-      "matchPackageNames": ["eslint"],
-      "matchPackagePrefixes": ["eslint-", "@typescript-eslint/"],
-      "groupName": "eslint"
-    },
+    // {
+    //   "matchPackageNames": ["jest", "ts-jest"],
+    //   "matchPackagePrefixes": ["jest-"],
+    //   "groupName": "jest"
+    // },
+    // {
+    //   "matchPackageNames": ["eslint"],
+    //   "matchPackagePrefixes": ["eslint-", "@typescript-eslint/"],
+    //   "groupName": "eslint"
+    // },
     {
       "matchPackageNames": ["@types/node"],
       "allowedVersions": "16.x"
