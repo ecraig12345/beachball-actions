@@ -2,6 +2,21 @@
   "name": "beachball-actions-common",
   "entries": [
     {
+      "date": "Wed, 13 Jul 2022 21:10:43 GMT",
+      "tag": "beachball-actions-common_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bot@renovateapp.com",
+            "package": "beachball-actions-common",
+            "commit": "416e3ad05df866e8dc3ebeba50db348d845a8f2c",
+            "comment": "Update dependency @actions/core to v1.9.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jun 2022 20:43:51 GMT",
       "tag": "beachball-actions-common_v0.2.0",
       "version": "0.2.0",
