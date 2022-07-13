@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
 
-concurrency: ${{ github.ref }}-ci
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   ci:
