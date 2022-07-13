@@ -1,7 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
-  "allowPostUpgradeCommandTemplating": true,
   "postUpdateOptions": ["yarnDedupeHighest"],
   "postUpgradeTasks": {
     "commands": [
@@ -10,21 +9,18 @@
       "git reset"
     ],
     "fileFilters": ["**/*"],
-    "executionMode": "update"
-  },
-  "vulnerabilityAlerts": {
-    "enabled": true
+    "executionMode": "branch"
   },
   "packageRules": [
-    {
-      "matchPaths": ["*/**"],
-      "additionalBranchPrefix": "{{packageFileDir}}-",
-      "commitMessageSuffix": "({{packageFileDir}})",
-      "excludePackageNames": [
-        // update all action.yaml in single pull request
-        "@types/node"
-      ]
-    },
+    // {
+    //   "matchPaths": ["*/**"],
+    //   "additionalBranchPrefix": "{{packageFileDir}}-",
+    //   "commitMessageSuffix": "({{packageFileDir}})",
+    //   "excludePackageNames": [
+    //     // update all action.yaml in single pull request
+    //     "@types/node"
+    //   ]
+    // },
     {
       "matchPackageNames": ["jest", "ts-jest"],
       "matchPackagePrefixes": ["jest-"],

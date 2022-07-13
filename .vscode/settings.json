@@ -1,6 +1,6 @@
 {
   "editor.formatOnSave": true,
   "files.associations": {
-    "**/renovate.json": "jsonc"
+    "**/renovate.json5": "jsonc"
   }
 }
