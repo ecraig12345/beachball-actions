@@ -3432,10 +3432,10 @@ kleur@^3.0.2, kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@0.41.0:
-  version "0.41.0"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-0.41.0.tgz#d81ff6ae48faa516a0ae722e959b83ec7222519a"
-  integrity sha512-T0E95nE6xa2oYDw2kleJFBUC9U5N1SWPFZEPniPqL4O1AsXngRwaAQuQXwg4itNAYojk/aJASxJMOT/I1aXvuA==
+lage@0.42.1:
+  version "0.42.1"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-0.42.1.tgz#430862cfe88aab15c811c8c93967ab67a1810386"
+  integrity sha512-ZE5IJ1D+qpOsIqZyj5HEO2aXFitOKbi3m8HX7oyxthTchiAnhNQb+zM+vPUKwIO/hGFz08+uAZxXd1tHPlYYPw==
   dependencies:
     "@microsoft/task-scheduler" "^2.7.1"
     abort-controller "^3.0.0"
