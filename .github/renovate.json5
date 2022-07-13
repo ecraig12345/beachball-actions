@@ -26,11 +26,14 @@
     //   "matchPackagePrefixes": ["jest-"],
     //   "groupName": "jest"
     // },
-    // {
-    //   "matchPackageNames": ["eslint"],
-    //   "matchPackagePrefixes": ["eslint-", "@typescript-eslint/"],
-    //   "groupName": "eslint"
-    // },
+    {
+      "groupName": "github action packages",
+      "matchPackagePrefixes": ["@actions/"]
+    },
+    {
+      "groupName": "eslint packages",
+      "matchPackagePatterns": ["eslint"]
+    },
     {
       "matchPackageNames": ["@types/node"],
       "allowedVersions": "16.x"
