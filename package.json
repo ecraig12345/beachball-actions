@@ -32,7 +32,7 @@
     "lage": "0.41.0",
     "lint-staged": "13.0.0",
     "parse-url": "6.0.0",
-    "prettier": "2.6.2",
+    "prettier": "2.7.1",
     "rimraf": "3.0.2",
     "syncpack": "8.0.0",
     "ts-jest": "28.0.4",
