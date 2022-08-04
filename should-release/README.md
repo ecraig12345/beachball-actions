@@ -60,7 +60,7 @@ jobs:
 | `token`       | string               | yes      |                 | GitHub token with `actions:write` permission                      |
 | `mode`        | `cancel` \| `output` |          | `cancel`        | Whether to cancel the job or only output the result to a variable |
 | `batch`       | boolean              |          | `false`         | Whether to emulate batched behavior (see below)                   |
-| `change-glob` | string               |          | `change/*.json` | Glob to check for Beachball change files                          |
+| `changeGlob` | string               |          | `change/*.json` | Glob to check for Beachball change files                          |
 
 ### `batch` option
 
