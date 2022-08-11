@@ -1,8 +1,16 @@
 # Change Log - beachball-actions-common
 
-This log was last generated on Wed, 13 Jul 2022 21:10:43 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Aug 2022 02:43:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.2.2
+
+Thu, 11 Aug 2022 02:43:11 GMT
+
+### Patches
+
+- Update dependency @actions/core to v1.9.1 (email not defined)
 
 ## 0.2.1
 
