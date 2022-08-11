@@ -19,11 +19,11 @@
     //     "@types/node"
     //   ]
     // },
-    // {
-    //   "matchPackageNames": ["jest", "ts-jest"],
-    //   "matchPackagePrefixes": ["jest-"],
-    //   "groupName": "jest"
-    // },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true,
+      "platformAutomerge": true
+    },
     {
       "groupName": "github action packages",
       "matchPackagePrefixes": ["@actions/"]
