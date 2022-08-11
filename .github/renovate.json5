@@ -1,16 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "postUpdateOptions": ["yarnDedupeHighest"],
-  "postUpgradeTasks": {
-    "commands": [
-      "git add --all",
-      "npx beachball change --no-commit --type patch --message '{{{commitMessage}}}'",
-      "git reset"
-    ],
-    "fileFilters": ["**/*"],
-    "executionMode": "branch"
-  },
+  "extends": [
+    "github>ecraig12345/renovate-config:libraryRecommended",
+    "github>ecraig12345/renovate-config:autoUpdateTypes",
+    "github>ecraig12345/renovate-config:groupMore",
+    "github>ecraig12345/renovate-config:keepFresh"
+  ],
+  "labels": ["renovate"],
+  "reviewers": ["ecraig12345"],
+
   "packageRules": [
     // {
     //   "matchPaths": ["*/**"],
