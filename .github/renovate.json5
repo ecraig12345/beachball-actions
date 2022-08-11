@@ -9,6 +9,11 @@
   "labels": ["renovate"],
   "reviewers": ["ecraig12345"],
 
+  "lockFileMaintenance": {
+    "automerge": true,
+    "platformAutomerge": true
+  },
+
   "packageRules": [
     // {
     //   "matchPaths": ["*/**"],
