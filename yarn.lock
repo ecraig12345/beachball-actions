@@ -3123,10 +3123,10 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@1.7.3:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-1.7.3.tgz#af6d4d4e829b2be837e7165f8ec6f920eb1db069"
-  integrity sha512-EEiBYGUynpjbhfSv5CVwSuqZdA4N9Iiozu7GojJb25aXKVf9IV6XQjSpFApNyUSLra26jDVjCd4DQLeJhQnnXg==
+lage@1.7.4:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-1.7.4.tgz#eb08dee0206a29c203b772cb4a5aac78bb396687"
+  integrity sha512-sdFC6z9XFMX4ex4bxrGO5bA/bF54X57l5frXEeXdB2y08bqwmSiDUecQMvzn3q7lxgQ7KL0DewN5au2+PTGNjw==
   dependencies:
     "@lage-run/logger" "*"
     "@xmldom/xmldom" "^0.8.0"
