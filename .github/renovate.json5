@@ -8,6 +8,8 @@
     "github>microsoft/m365-renovate-config:keepFresh",
     "github>microsoft/m365-renovate-config:restrictNode(16)"
   ],
+  "ignorePresets": ["github>microsoft/m365-renovate-config:dependencyDashboardMajor"],
+
   "labels": ["renovate"],
   "reviewers": ["ecraig12345"],
 
