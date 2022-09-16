@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecraig12345/beachball-actions.git"
+  },
   "scripts": {
     "build": "lage build --verbose",
     "change": "beachball change",
