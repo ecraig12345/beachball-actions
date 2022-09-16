@@ -36,7 +36,7 @@ export async function checkForNewerRuns(token: string): Promise<boolean> {
       await octokit.rest.actions.listWorkflowRuns({
         ...github.context.repo,
         workflow_id: workflowId,
-        status: 'pending' as any, // eslint-disable-line -- "pending" is valid but missing from types
+        status: 'queued',
         branch: branchName,
       })
     ).data.total_count;
