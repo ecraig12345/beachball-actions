@@ -1,8 +1,16 @@
 # Change Log - beachball-actions-common
 
-This log was last generated on Thu, 11 Aug 2022 02:43:11 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Sep 2022 21:54:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.2.4
+
+Fri, 16 Sep 2022 21:54:46 GMT
+
+### Patches
+
+- Update checkForNewerRuns to look for queued workflows (elcraig@microsoft.com)
 
 ## 0.2.2
 
