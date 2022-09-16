@@ -2,9 +2,11 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>microsoft/m365-renovate-config:beachballLibraryRecommended",
-    "github>microsoft/m365-renovate-config:autoUpdateTypes",
+    "github>microsoft/m365-renovate-config:automergeTypes",
     "github>microsoft/m365-renovate-config:groupMore",
-    "github>microsoft/m365-renovate-config:keepFresh"
+    "github>microsoft/m365-renovate-config:groupTypes",
+    "github>microsoft/m365-renovate-config:keepFresh",
+    "github>microsoft/m365-renovate-config:restrictNode(16)"
   ],
   "labels": ["renovate"],
   "reviewers": ["ecraig12345"],
@@ -32,10 +34,6 @@
     {
       "groupName": "github action packages",
       "matchPackagePrefixes": ["@actions/"]
-    },
-    {
-      "groupName": "eslint packages",
-      "matchPackagePatterns": ["eslint"]
     },
     {
       "matchPackageNames": ["@types/node"],
