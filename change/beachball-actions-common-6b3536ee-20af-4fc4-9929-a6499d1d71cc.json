@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update checkForNewerRuns to look for queued workflows",
+  "packageName": "beachball-actions-common",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
