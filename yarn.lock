@@ -2997,10 +2997,10 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-lage@1.8.6:
-  version "1.8.6"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-1.8.6.tgz#7e8441a7c0924859525d34d54e98851c6bafd3f1"
-  integrity sha512-iAUZ2qOBC2Xo8rHXU4ajXVtEzzxfkDFyZbMoI3y73QMk1OUql9VQeIGMBxZCHibanwUmUZbxlrnFD+5vQJaLKg==
+lage@1.8.7:
+  version "1.8.7"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-1.8.7.tgz#073869afb8dc192bad8f18f12a46789d6e34db69"
+  integrity sha512-gSQN6Er5hfuvQs6+BfXo7pwPLmYua+BgIBUNjO7QAFlGXz58lyFIOf3e++ccmx4tL8Tdry7sYacEMspIjfEcOQ==
   dependencies:
     "@lage-run/logger" "*"
     "@xmldom/xmldom" "^0.8.0"
@@ -4160,7 +4160,7 @@ word-wrap@^1.2.3:
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
 
-workspace-tools@^0.26.0, workspace-tools@^0.26.3:
+workspace-tools@^0.26.3:
   version "0.26.5"
   resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.26.5.tgz#a023ff7294cc6cdee0d25c199af27744d96b82d6"
   integrity sha512-RUbqQn3DL7WKpb6BHTDiCUJeVMHq7BySzRgzmJcTUmaZTRlUxk/DIpeRSYaisFFjTEOFkGUoylBcBpqIdkrg8w==
