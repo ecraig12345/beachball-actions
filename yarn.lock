@@ -1378,10 +1378,10 @@ base64-js@^1.3.1:
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
-beachball@2.31.0:
-  version "2.31.0"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.31.0.tgz#dd556f2a75ab08039320e94291eed3b87809f502"
-  integrity sha512-xi6xf9nLLp9dpXBhnQuDsWdM6k+I34CrSdtniW8Qlt/BdHoUdTGhFFk9ky30pgywCam/bgGQbMd2FOChaUvfjQ==
+beachball@2.31.1:
+  version "2.31.1"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.31.1.tgz#dc649688e635f2f667c0b803402c4aea6c45e682"
+  integrity sha512-evxdaylIXwMRPTjnKGUSjF0xdScw2EpE+VMfI+Q27uZrRXhdgHEfkQvVMbIs60bX5wbdUToi9FXF/CJVW0DM6A==
   dependencies:
     cosmiconfig "^7.0.0"
     execa "^5.0.0"
