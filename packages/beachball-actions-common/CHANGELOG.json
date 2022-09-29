@@ -2,6 +2,21 @@
   "name": "beachball-actions-common",
   "entries": [
     {
+      "date": "Thu, 29 Sep 2022 20:28:23 GMT",
+      "tag": "beachball-actions-common_v0.2.6",
+      "version": "0.2.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "beachball-actions-common",
+            "commit": "b377a814fe3d8559203bc97025277e9d5f0f552d",
+            "comment": "Update dependency @actions/core to v1.10.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Sep 2022 20:26:12 GMT",
       "tag": "beachball-actions-common_v0.2.5",
       "version": "0.2.5",
