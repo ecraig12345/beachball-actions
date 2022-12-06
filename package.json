@@ -24,7 +24,7 @@
     "@types/node": "16.18.4",
     "@typescript-eslint/eslint-plugin": "5.45.1",
     "@typescript-eslint/parser": "5.45.1",
-    "@vercel/ncc": "0.34.0",
+    "@vercel/ncc": "0.36.0",
     "beachball": "2.31.5",
     "eslint": "8.29.0",
     "eslint-plugin-jest": "27.1.6",
