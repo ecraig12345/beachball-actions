@@ -34,7 +34,7 @@
     "js-yaml": "4.1.0",
     "lage": "1.9.5",
     "lint-staged": "13.1.0",
-    "prettier": "2.8.0",
+    "prettier": "2.8.1",
     "rimraf": "3.0.2",
     "syncpack": "8.4.11",
     "ts-jest": "29.0.3",
