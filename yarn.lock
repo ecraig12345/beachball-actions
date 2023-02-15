@@ -3246,10 +3246,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-syncpack@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/syncpack/-/syncpack-9.0.0.tgz#8a5168c345cdc2b9871afe9296f914686dfefc7d"
-  integrity sha512-OSvTFCi1/pv8shiGH18IYjKxiFpvT7VkNpgSjPCFtl9oIHR0yNWicw8ILMyRqULgwgzFaBfDWjQcQPKcADhLiQ==
+syncpack@9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/syncpack/-/syncpack-9.0.2.tgz#3aa3842146487b9a30eb2350fbce3853fb0ee075"
+  integrity sha512-NKBt0NTbUb8mdH0V4vC8RD43Z+SsZdmGqsCJm0SHOT4le6JS30dMdZsrB2sqDUpQTKSFGHE2PDIXep3GzBQnTQ==
   dependencies:
     "@mobily/ts-belt" "3.13.1"
     chalk "4.1.2"
