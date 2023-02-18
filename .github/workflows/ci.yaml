@@ -78,23 +78,6 @@ jobs:
               core.info(`should-release returned shouldRelease: "${shouldRelease}"`);
             }
 
-      - name: Publish to npm
-        if: ${{ github.ref_name == 'main' && steps.shouldRelease.outputs.shouldRelease == 'yes' }}
-        run: |
-          git config -l
-          git config user.name "Elizabeth Craig"
-          git config user.email "elcraig@microsoft.com"
-          git config --unset http.https://github.com/.extraheader
-          git remote set-url origin https://$GITHUB_ACTOR:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git
-          yarn beachball publish -b origin/main -y -n $NPM_TOKEN
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      - name: Release
-        if: ${{ github.ref_name == 'main' && steps.batchRuns.outputs.shouldCancel == 'no' }}
-        uses: int128/release-typescript-action@v1
-
   # Run the release in a separate job with release environment access.
   # This approach requires re-running the build but skips the tests.
   release:
