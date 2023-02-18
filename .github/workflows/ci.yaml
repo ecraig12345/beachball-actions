@@ -86,6 +86,8 @@ jobs:
 
     runs-on: ubuntu-latest
     environment: release
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v3
@@ -110,6 +112,8 @@ jobs:
           mode: output
           token: ${{ github.token }}
 
+      # Set user info so committing is allowed.
+      # Also add auth to the remote URL to allow both beachball and release-typescript-action to push.
       - name: Update git config
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
         run: |
@@ -130,5 +134,3 @@ jobs:
       - name: Release actions
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
         uses: int128/release-typescript-action@v1
-        with:
-          token: ${{ secrets.REPO_PAT }}
