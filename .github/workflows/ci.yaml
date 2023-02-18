@@ -81,11 +81,14 @@ jobs:
   # Run the release in a separate job with release environment access.
   # This approach requires re-running the build but skips the tests.
   release:
-    if: ${{ github.ref == 'refs/heads/main' && needs.ci.outputs.shouldCancel == 'no' }}
     needs: ci
+    if: ${{ github.ref == 'refs/heads/main' && needs.ci.outputs.shouldCancel == 'no' }}
 
     runs-on: ubuntu-latest
+
+    # This environment contains secrets needed for releasing
     environment: release
+
     permissions:
       contents: write
 
@@ -112,24 +115,25 @@ jobs:
           mode: output
           token: ${{ github.token }}
 
-      # Set user info so committing is allowed.
-      # Also add auth to the remote URL to allow both beachball and release-typescript-action to push.
-      - name: Update git config
-        if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
+      - name: Set git user
         run: |
-          git config -l
           git config user.name "Elizabeth Craig"
           git config user.email "elcraig@microsoft.com"
-          git remote set-url origin "https://$REPO_PAT@github.com/$GITHUB_REPOSITORY.git"
-        env:
-          REPO_PAT: ${{ secrets.REPO_PAT }}
 
       - name: Publish common package to npm
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
         run: |
+          # Get the existing remote URL without creds, and use a trap (like try/finally)
+          # to restore it after this step finishes
+          trap "git remote set-url origin '$(git remote get-url origin)'" EXIT
+
+          # Add a token to the remote URL for auth during release
+          git remote set-url origin "https://$REPO_PAT@github.com/$GITHUB_REPOSITORY"
+
           yarn beachball publish -b origin/main -y -n "$NPM_TOKEN"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          REPO_PAT: ${{ secrets.REPO_PAT }}
 
       - name: Release actions
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
