@@ -103,25 +103,30 @@ jobs:
       - run: yarn build
       - run: yarn package
 
-      # Verify that no newer runs are queued
+      # Verify that no newer runs were queued since the check in the previous job
       - uses: ./batch-runs
         id: batchRuns
         with:
           mode: output
           token: ${{ github.token }}
 
-      - name: Publish to npm
-        if: ${{ steps.shouldRelease.outputs.shouldCancel == 'no' }}
+      - name: Update git config
+        if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
         run: |
           git config -l
           git config user.name "Elizabeth Craig"
           git config user.email "elcraig@microsoft.com"
           git remote set-url origin "https://$REPO_PAT@github.com/$GITHUB_REPOSITORY.git"
+        env:
+          REPO_PAT: ${{ secrets.REPO_PAT }}
+
+      - name: Publish common package to npm
+        if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
+        run: |
           yarn beachball publish -b origin/main -y -n "$NPM_TOKEN"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          REPO_PAT: ${{ secrets.REPO_PAT }}
 
-      - name: Release
+      - name: Release actions
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
         uses: int128/release-typescript-action@v1
