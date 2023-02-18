@@ -6,7 +6,7 @@ One example of how this is useful is to prevent forgotten lock file updates.
 
 (Despite the repo name, this particular action is not specific to [Beachball](https://microsoft.github.io/beachball).)
 
-## Getting Started
+## Getting started
 
 To run this action:
 

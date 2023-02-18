@@ -12,7 +12,7 @@ concurrency: ${{ github.ref }}
 
 (Despite the repo name, this particular action is not specific to [Beachball](https://microsoft.github.io/beachball).)
 
-## Getting Started
+## Getting started
 
 The most basic way to run this action is as follows. However, this will result in a "red" build if the run is canceled.
 

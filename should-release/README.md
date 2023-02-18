@@ -5,7 +5,9 @@ Determines whether a release workflow run is needed, and cancels it if not (unle
 - [Beachball](https://microsoft.github.io/beachball) change files exist
 - If `batch: true` is set, no newer runs for the same branch exist _(must also enable `concurrency` in workflow; see below)_
 
-## Getting Started
+## Getting started
+
+> ⚠️ The `token` used for this action **must** have at least `actions: read` permission. `actions: write` is required if `mode` is `cancel`.
 
 The most basic way to run this action is as follows. However, this will result in a "red" build if the run is canceled.
 

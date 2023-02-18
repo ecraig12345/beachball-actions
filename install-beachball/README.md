@@ -4,7 +4,7 @@ Globally installs the version of [Beachball](https://microsoft.github.io/beachba
 
 This is intended for running a change files check in a separate workflow where you don't need to do a full `yarn`/`npm install`.
 
-## Getting Started
+## Getting started
 
 To run this action:
 
