@@ -92,3 +92,56 @@ jobs:
       - name: Release
         if: ${{ github.ref_name == 'main' && steps.batchRuns.outputs.shouldCancel == 'no' }}
         uses: int128/release-typescript-action@v1
+
+  release:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: ci
+
+    runs-on: ubuntu-latest
+    environment: release
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+
+      - run: yarn --frozen-lockfile --ignore-scripts
+
+      - run: yarn build
+      - run: yarn package
+
+      # "should release" only refers to whether beachball-actions-common should be published to npm
+      - uses: ./should-release
+        id: shouldRelease
+        with:
+          mode: output
+          token: ${{ github.token }}
+          batch: true
+
+      - uses: ./batch-runs
+        id: batchRuns
+        with:
+          mode: output
+          token: ${{ github.token }}
+
+      - name: Publish to npm
+        if: ${{ github.ref_name == 'main' && steps.shouldRelease.outputs.shouldRelease == 'yes' }}
+        run: |
+          git config -l
+          git config user.name "Elizabeth Craig"
+          git config user.email "elcraig@microsoft.com"
+          git remote set-url origin "https://$REPO_PAT@github.com/$GITHUB_REPOSITORY.git"
+          yarn beachball publish -b origin/main -y -n "$NPM_TOKEN"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          REPO_PAT: ${{ secrets.REPO_PAT }}
+
+      - name: Release
+        if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
+        uses: int128/release-typescript-action@v1

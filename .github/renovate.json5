@@ -28,11 +28,11 @@
     //     "@types/node"
     //   ]
     // },
-    {
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true,
-      "platformAutomerge": true
-    },
+    // {
+    //   "matchDepTypes": ["devDependencies"],
+    //   "automerge": true,
+    //   "platformAutomerge": true
+    // },
     {
       "groupName": "github action packages",
       "matchPackagePrefixes": ["@actions/"]
