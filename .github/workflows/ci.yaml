@@ -130,3 +130,5 @@ jobs:
       - name: Release actions
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
         uses: int128/release-typescript-action@v1
+        with:
+          token: ${{ secrets.REPO_PAT }}
