@@ -29,9 +29,9 @@
     minimatch "^3.0.4"
 
 "@actions/http-client@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@actions/http-client/-/http-client-2.0.1.tgz#873f4ca98fe32f6839462a6f046332677322f99c"
-  integrity sha512-PIXiMVtz6VvyaRsGY268qvj57hXQEpsYogYOu2nrQhlf+XCGmZstmuZBbAybUl1nQGnvS1k1eEsQ69ZoD7xlSw==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@actions/http-client/-/http-client-2.1.0.tgz#b6d8c3934727d6a50d10d19f00a711a964599a9f"
+  integrity sha512-BonhODnXr3amchh4qkmjPMUO8mFi/zLaaCeCAJZqch8iQqyDnVIkySjB38VHAC8IJ+bnlgfOqlhpyCUZHlQsqw==
   dependencies:
     tunnel "^0.0.6"
 
@@ -1209,9 +1209,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001449:
-  version "1.0.30001460"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001460.tgz#31d2e26f0a2309860ed3eff154e03890d9d851a7"
-  integrity sha512-Bud7abqjvEjipUkpLs4D7gR0l8hBYBHoa+tGtKJHvT2AYzLp1z7EmVkUT4ERpVUfca8S2HGIVs883D8pUH1ZzQ==
+  version "1.0.30001464"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001464.tgz#888922718df48ce5e33dcfe1a2af7d42676c5eb7"
+  integrity sha512-oww27MtUmusatpRpCGSOneQk2/l5czXANDSFvsc7VuOQ86s3ANhZetpwXNf1zY/zdfP63Xvjz325DAdAoES13g==
 
 chalk@4.1.2, chalk@^4.0.0:
   version "4.1.2"
@@ -1433,9 +1433,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.284:
-  version "1.4.320"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.320.tgz#4d83a90ff74f93939c5413c2ac5a16c696600632"
-  integrity sha512-h70iRscrNluMZPVICXYl5SSB+rBKo22XfuIS1ER0OQxQZpKTnFpuS6coj7wY9M/3trv7OR88rRMOlKmRvDty7Q==
+  version "1.4.327"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.327.tgz#288b106518cfed0a60f7de8a0480432a9be45477"
+  integrity sha512-DIk2H4g/3ZhjgiABJjVdQvUdMlSABOsjeCm6gmUzIdKxAuFrGiJ8QXMm3i09grZdDBMC/d8MELMrdwYRC0+YHg==
 
 emittery@^0.13.1:
   version "0.13.1"
@@ -3055,9 +3055,9 @@ resolve-from@^5.0.0:
   integrity sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==
 
 resolve.exports@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/resolve.exports/-/resolve.exports-2.0.0.tgz#c1a0028c2d166ec2fbf7d0644584927e76e7400e"
-  integrity sha512-6K/gDlqgQscOlg9fSRpWstA8sYe8rbELsSTNpx+3kTrsVCzvSl0zIvRErM7fdl9ERWDsKnrLnwB+Ne89918XOg==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/resolve.exports/-/resolve.exports-2.0.1.tgz#cee884cd4e3f355660e501fa3276b27d7ffe5a20"
+  integrity sha512-OEJWVeimw8mgQuj3HfkNl4KqRevH7lzeQNaWRPfx0PPse7Jk6ozcsG4FKVgtzDsC1KUF+YlTHh17NcgHOPykLw==
 
 resolve@^1.20.0:
   version "1.22.1"
