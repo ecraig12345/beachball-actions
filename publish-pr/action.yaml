@@ -1,0 +1,108 @@
+name: publish-pr
+description: Creates a PR for merging beachball updates and publishing packages
+inputs:
+  token:
+    description: 'GitHub token with "contents: write", "pull-requests: write", and "checks: read" permissions'
+    required: true
+  approvalToken:
+    description: GitHub token with PR approval permission
+    required: true
+runs:
+  using: composite
+  steps:
+    # TODO: beachball PR mode:
+    # - create branch and bump
+    # - use hook to create and wait for PR (and clean up on failure)
+    # - verify that bumped versions are still valid (not published to registry by another build)
+    # - publish to registry
+    # - use hook to merge PR
+
+    - name: Fake publish PR
+      run: |
+        publish_branch="publish_pr_$(date +%s)"
+        echo "PUBLISH_BRANCH=$publish_branch" >> $GITHUB_ENV
+
+        git config user.name "Cloudpack Build"
+        git config user.email "cloudpack-internal@service.microsoft.com"
+        git checkout -b "$publish_branch"
+        git commit -m 'Test commit' --allow-empty
+        git push -u origin "$publish_branch"
+
+        echo "Creating PR"
+        pr_url=$(gh pr create --title 'Fake publish PR' --body 'Fake publish PR')
+        echo "Created $pr_url"
+
+        pr_number=$(grep -Eo '[0-9]+$' <<< "$pr_url")
+
+        echo "Setting PR to auto-merge"
+        gh pr merge --squash --auto -d
+
+        echo "PR_NUMBER=$pr_number" >> $GITHUB_ENV
+        echo "PR_URL=$pr_url" >> $GITHUB_ENV
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Approve fake publish PR
+      # can't use gh because "Personal access tokens with fine grained access do not support the GraphQL API".......
+      run: |
+        gh api \
+          --method POST \
+          -H "Accept: application/vnd.github+json" \
+          "/repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/reviews" \
+          -f event='APPROVE'
+      env:
+        # approval must be done by someone else
+        GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
+
+    - name: Wait for fake publish PR
+      run: |
+        function log_failure {
+          echo "::error::Aborting publish due to $1. See $PR_URL for details."
+        }
+
+        slept=0
+
+        while true; do
+          pr_info=$(gh pr view "$PR_NUMBER" --json state,statusCheckRollup -q '.state,([.statusCheckRollup[] | select(.conclusion == "FAILURE")] | length)')
+          # read exits 1 in normal circumstances
+          read -d '\0' pr_state pr_failed_checks <<< "$pr_info" || true
+
+          if [[ $pr_state == "MERGED" ]]; then
+            echo "PR merged"
+            break
+          elif [[ $pr_state != "OPEN" ]]; then
+            log_failure "unexpected PR state $pr_state"
+            exit 1
+          fi
+
+          if [[ "$pr_failed_checks" != "0" ]]; then
+            log_failure "failed PR checks"
+            exit 1
+          fi
+
+          if [[ $slept -gt 60 ]]; then
+            log_failure "PR taking too long to merge"
+            exit 1
+          fi
+
+          echo "Waiting for PR to merge (elapsed: $slept min)..."
+          sleep 60
+          # pre-increment to ensure exit 0
+          ((++slept))
+        done
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Clean up on failure or cancellation
+      if: ${{ failure() || cancelled() }}
+      run: |
+        if [[ -n "$PR_NUMBER" ]]; then
+          echo "Closing PR $PR_URL"
+          gh pr close "$PR_NUMBER" || true
+        fi
+        if [[ -n "$PUBLISH_BRANCH" ]]; then
+          echo "Deleting branch $PUBLISH_BRANCH"
+          git push origin --delete "$PUBLISH_BRANCH" || true
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
