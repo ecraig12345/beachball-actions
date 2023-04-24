@@ -40,6 +40,14 @@
     {
       "matchPackageNames": ["@types/node"],
       "allowedVersions": "16.x"
+    },
+    {
+      // Group most updates
+      "groupName": "devDependencies",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchDepTypes": ["devDependencies"],
+      "schedule": ["before 5am on the 5th and 20th day of the month"]
     }
   ],
   "regexManagers": [
