@@ -59,6 +59,7 @@ jobs:
               core.setFailed(`batch-runs unexpectedly returned "${shouldCancel}"`);
             }
 
+      # Note: this is not actually used here to determine if a release is needed
       - name: e2e - should-release
         uses: ./should-release
         id: shouldRelease
@@ -66,9 +67,6 @@ jobs:
           mode: output
           token: ${{ github.token }}
           batch: true
-          # This repo uses beachball for the commons package, but it also needs to release
-          # (update the v1 tag) if any files have changed in the action packages.
-          changeGlob: '**/*'
 
       - name: e2e - should-release result
         uses: actions/github-script@v6
@@ -118,25 +116,20 @@ jobs:
           mode: output
           token: ${{ github.token }}
 
-      - name: Set git user
+      - name: Set git config
         run: |
           git config user.name "Elizabeth Craig"
           git config user.email "elcraig@microsoft.com"
+          git remote set-url origin "https://$REPO_PAT@github.com/$GITHUB_REPOSITORY"
+        env:
+          REPO_PAT: ${{ secrets.REPO_PAT }}
 
       - name: Publish common package to npm
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
         run: |
-          # Get the existing remote URL without creds, and use a trap (like try/finally)
-          # to restore it after this step finishes
-          trap "git remote set-url origin '$(git remote get-url origin)'" EXIT
-
-          # Add a token to the remote URL for auth during release
-          git remote set-url origin "https://$REPO_PAT@github.com/$GITHUB_REPOSITORY"
-
           yarn beachball publish -b origin/main -y -n "$NPM_TOKEN"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          REPO_PAT: ${{ secrets.REPO_PAT }}
 
       - name: Release actions
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
