@@ -66,6 +66,9 @@ jobs:
           mode: output
           token: ${{ github.token }}
           batch: true
+          # This repo uses beachball for the commons package, but it also needs to release
+          # (update the v1 tag) if any files have changed in the action packages.
+          changeGlob: '**/*'
 
       - name: e2e - should-release result
         uses: actions/github-script@v6
