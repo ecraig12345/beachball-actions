@@ -2,6 +2,11 @@ import * as core from '@actions/core';
 import * as github from '@actions/github';
 import { logGithubRequestError } from './logGithubRequestError';
 
+type Octokit = ReturnType<typeof github.getOctokit>;
+type WorkflowRunsResult = Awaited<
+  ReturnType<Octokit['rest']['actions']['listWorkflowRuns']>
+>['data'];
+
 /**
  * Check for newer pending runs of this workflow against the current branch.
  * Assumes a required `token` input for the action.
@@ -30,21 +35,32 @@ export async function checkForNewerRuns(token: string): Promise<boolean> {
     process.exit(1);
   }
 
-  let thisBranchRunCount: number;
+  let thisBranchRuns: WorkflowRunsResult;
   try {
-    thisBranchRunCount = (
+    thisBranchRuns = (
       await octokit.rest.actions.listWorkflowRuns({
         ...github.context.repo,
         workflow_id: workflowId,
         status: 'queued',
         branch: branchName,
       })
-    ).data.total_count;
+    ).data;
   } catch (err) {
     logGithubRequestError(err, `runs of workflow "${workflowId}" for branch "${branchName}"`);
     process.exit(1);
   }
 
-  core.info(`There are ${thisBranchRunCount || 'no'} newer runs pending for ${branchName}.`);
+  const thisBranchRunCount = thisBranchRuns.total_count;
+  core.info(
+    `There ${
+      thisBranchRunCount === 1 ? 'is 1 newer run' : `are ${thisBranchRunCount || 'no'} newer runs`
+    } pending for ${branchName}.`,
+  );
+  if (thisBranchRunCount) {
+    for (const run of thisBranchRuns.workflow_runs) {
+      core.info(`- ${run.id}, queued at ${run.created_at} ${run.html_url}`);
+    }
+  }
+
   return thisBranchRunCount > 0;
 }
