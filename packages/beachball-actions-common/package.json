@@ -1,6 +1,6 @@
 {
   "name": "beachball-actions-common",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Utilities for Beachball-related GitHub Actions",
   "author": "Elizabeth Craig <elcraig@microsoft.com>",
   "repository": {
@@ -9,6 +9,9 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "rimraf lib && tsc",
     "test": "jest"

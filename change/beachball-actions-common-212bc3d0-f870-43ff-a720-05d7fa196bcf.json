@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add more logging in checkForNewerRuns",
-  "packageName": "beachball-actions-common",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

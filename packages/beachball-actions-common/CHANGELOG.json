@@ -2,6 +2,21 @@
   "name": "beachball-actions-common",
   "entries": [
     {
+      "date": "Mon, 24 Apr 2023 22:25:58 GMT",
+      "tag": "beachball-actions-common_v0.2.8",
+      "version": "0.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "beachball-actions-common",
+            "commit": "377bd7455ae3ca40761501f802ab4b850338090f",
+            "comment": "Add more logging in checkForNewerRuns"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Sep 2022 21:18:50 GMT",
       "tag": "beachball-actions-common_v0.2.7",
       "version": "0.2.7",
