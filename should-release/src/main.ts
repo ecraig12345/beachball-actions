@@ -26,7 +26,9 @@ async function main() {
   if (mode === 'cancel') {
     await cancelRun(token);
   } else {
-    core.setOutput('shouldRelease', shouldRelease ? 'yes' : 'no');
+    const result = shouldRelease ? 'yes' : 'no';
+    core.info(`Should release: ${result}`);
+    core.setOutput('shouldRelease', result);
   }
 }
 
