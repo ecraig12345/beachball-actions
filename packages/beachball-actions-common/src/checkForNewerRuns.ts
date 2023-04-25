@@ -50,17 +50,22 @@ export async function checkForNewerRuns(token: string): Promise<boolean> {
     process.exit(1);
   }
 
-  const thisBranchRunCount = thisBranchRuns.total_count;
+  const runCount = thisBranchRuns.total_count;
   core.info(
     `There ${
-      thisBranchRunCount === 1 ? 'is 1 newer run' : `are ${thisBranchRunCount || 'no'} newer runs`
+      runCount === 1 ? 'is 1 newer run' : `are ${runCount || 'no'} newer runs`
     } pending for ${branchName}.`,
   );
-  if (thisBranchRunCount) {
+  if (runCount) {
+    if (runCount !== thisBranchRuns.workflow_runs.length) {
+      throw new Error(
+        `Mismatched run count: length ${thisBranchRuns.workflow_runs.length} vs total ${runCount}`,
+      );
+    }
     for (const run of thisBranchRuns.workflow_runs) {
       core.info(`- ${run.id}, queued at ${run.created_at} ${run.html_url}`);
     }
   }
 
-  return thisBranchRunCount > 0;
+  return runCount > 0;
 }
