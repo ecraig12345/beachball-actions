@@ -50,18 +50,15 @@ export async function checkForNewerRuns(token: string): Promise<boolean> {
     process.exit(1);
   }
 
-  const runCount = thisBranchRuns.total_count;
+  // At some point, the API started returning 1 for total_count but an empty array for workflow_runs,
+  // possibly when only the second stage of the current job is queued?
+  const runCount = thisBranchRuns.workflow_runs.length;
   core.info(
     `There ${
       runCount === 1 ? 'is 1 newer run' : `are ${runCount || 'no'} newer runs`
     } pending for ${branchName}.`,
   );
   if (runCount) {
-    if (runCount !== thisBranchRuns.workflow_runs.length) {
-      throw new Error(
-        `Mismatched run count: length ${thisBranchRuns.workflow_runs.length} vs total ${runCount}`,
-      );
-    }
     for (const run of thisBranchRuns.workflow_runs) {
       core.info(`- ${run.id}, queued at ${run.created_at} ${run.html_url}`);
     }
