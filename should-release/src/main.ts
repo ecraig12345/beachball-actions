@@ -19,12 +19,14 @@ async function main() {
 
   core.debug('cwd: ' + process.cwd());
   const globDir = path.join(process.cwd(), path.dirname(changeGlob));
-  core.info(
-    `files in ${globDir}: ${fs
-      .readdirSync(globDir)
-      .map((f) => `\n  ${f}`)
-      .join('')}`,
-  );
+  if (fs.existsSync(globDir)) {
+    core.debug(
+      `files in ${globDir}: ${fs
+        .readdirSync(globDir)
+        .map((f) => `\n  ${f}`)
+        .join('')}`,
+    );
+  }
   const changeFiles = await (await glob.create(changeGlob)).glob();
   if (changeFiles.length === 0) {
     shouldRelease = false;
