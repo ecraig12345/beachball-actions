@@ -15,6 +15,7 @@ async function main() {
 
   let shouldRelease = true;
 
+  core.info('cwd: ' + process.cwd());
   const changeFiles = await (await glob.create(changeGlob)).glob();
   if (changeFiles.length === 0) {
     shouldRelease = false;
