@@ -1,5 +1,7 @@
 import * as core from '@actions/core';
 import * as glob from '@actions/glob';
+import * as fs from 'fs';
+import * as path from 'path';
 import {
   checkForNewerRuns,
   cancelRun,
@@ -15,7 +17,14 @@ async function main() {
 
   let shouldRelease = true;
 
-  core.info('cwd: ' + process.cwd());
+  core.debug('cwd: ' + process.cwd());
+  const globDir = path.join(process.cwd(), path.dirname(changeGlob));
+  core.info(
+    `files in ${globDir}: ${fs
+      .readdirSync(globDir)
+      .map((f) => `\n  ${f}`)
+      .join('')}`,
+  );
   const changeFiles = await (await glob.create(changeGlob)).glob();
   if (changeFiles.length === 0) {
     shouldRelease = false;
