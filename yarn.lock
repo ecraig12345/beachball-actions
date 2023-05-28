@@ -3343,10 +3343,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-syncpack@^9.8.4:
-  version "9.8.6"
-  resolved "https://registry.yarnpkg.com/syncpack/-/syncpack-9.8.6.tgz#edc06ea03295773165fb5086bb2655be03e5f094"
-  integrity sha512-4S4cUoKK9WenA/Wdk9GvlekzPR9PxC7sqcsUIsK4ypsa/pIYv8Ju1vxGNvp6Y1yI2S9EdCk0QJsB3/wRB8XYVw==
+syncpack@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/syncpack/-/syncpack-10.0.0.tgz#acddc5b52f4ac047873816a896df194fc8476c30"
+  integrity sha512-2NfjGsFNbsVUv/cdy6tnqFW4mCs02hJN/V/DGzPv8EYgVhdOyz52Q4RFSFm2P86utFkESnl5THqCcsUHNAqf8g==
   dependencies:
     chalk "4.1.2"
     commander "10.0.1"
@@ -3357,7 +3357,7 @@ syncpack@^9.8.4:
     read-yaml-file "2.1.0"
     semver "7.5.0"
     tightrope "0.1.0"
-    zod "3.21.4"
+    ts-toolbelt "9.6.0"
 
 test-exclude@^6.0.0:
   version "6.0.0"
@@ -3423,6 +3423,11 @@ ts-jest@^29.0.5:
     make-error "1.x"
     semver "7.x"
     yargs-parser "^21.0.1"
+
+ts-toolbelt@9.6.0:
+  version "9.6.0"
+  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-9.6.0.tgz#50a25426cfed500d4a09bd1b3afb6f28879edfd5"
+  integrity sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==
 
 tslib@^1.8.1:
   version "1.14.1"
@@ -3648,8 +3653,3 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
-
-zod@3.21.4:
-  version "3.21.4"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.21.4.tgz#10882231d992519f0a10b5dd58a38c9dabbb64db"
-  integrity sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==
