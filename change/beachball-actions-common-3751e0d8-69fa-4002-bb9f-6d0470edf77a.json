@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update dependency @actions/github to v6",
+  "packageName": "beachball-actions-common",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
