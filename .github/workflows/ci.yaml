@@ -20,7 +20,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version-file: .nvmrc
           cache: yarn
 
       - run: yarn --frozen-lockfile --ignore-scripts
@@ -101,7 +101,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version-file: .nvmrc
           cache: yarn
 
       - run: yarn --frozen-lockfile --ignore-scripts
@@ -135,4 +135,5 @@ jobs:
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
         uses: int128/release-typescript-action@v1
         with:
+          major-version: 2
           token: ${{ github.token }}
