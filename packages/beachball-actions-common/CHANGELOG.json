@@ -2,6 +2,21 @@
   "name": "beachball-actions-common",
   "entries": [
     {
+      "date": "Mon, 23 Oct 2023 18:00:05 GMT",
+      "version": "0.3.0",
+      "tag": "beachball-actions-common_v0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "beachball-actions-common",
+            "commit": "b31eec2f36b45ae343fa18b943adbe722676653f",
+            "comment": "Update to Node 20 and latest `@actions/github` to v6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Apr 2023 22:25:58 GMT",
       "tag": "beachball-actions-common_v0.2.8",
       "version": "0.2.8",

@@ -1,8 +1,16 @@
 # Change Log - beachball-actions-common
 
-This log was last generated on Mon, 24 Apr 2023 22:25:58 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2023 18:00:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 0.3.0
+
+Mon, 23 Oct 2023 18:00:05 GMT
+
+### Minor changes
+
+- Update to Node 20 and latest `@actions/github` to v6 (elcraig@microsoft.com)
 
 ## 0.2.8
 

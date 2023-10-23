@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update to Node 20 and latest `@actions/github` to v6",
-  "packageName": "beachball-actions-common",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
