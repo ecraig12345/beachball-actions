@@ -48,7 +48,7 @@ jobs:
           token: ${{ github.token }}
 
       - name: e2e - batch-runs result
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         if: ${{ steps.batchRuns.outputs.shouldCancel != 'no' }}
         with:
           script: |
@@ -69,7 +69,7 @@ jobs:
           batch: true
 
       - name: e2e - should-release result
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const shouldRelease = '${{ steps.shouldRelease.outputs.shouldRelease }}';
