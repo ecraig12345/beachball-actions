@@ -3,7 +3,7 @@ description: Globally installs the version of Beachball specified in the repo ro
 runs:
   using: composite
   steps:
-    - uses: actions/github-script@v6
+    - uses: actions/github-script@v7
       with:
         script: |
           const beachballVersion = require('./package.json').devDependencies.beachball;
