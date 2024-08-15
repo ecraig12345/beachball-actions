@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.9.0",
-    "@actions/glob": "^0.4.0",
+    "@actions/glob": "^0.5.0",
     "beachball-actions-common": "0.3.0"
   }
 }
