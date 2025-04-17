@@ -127,6 +127,8 @@ jobs:
       - name: Publish common package to npm
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
         run: |
+          echo "::error::Release disabled"
+          exit 1
           yarn beachball publish -b origin/main -y -n "$NPM_TOKEN"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
