@@ -2,5 +2,11 @@
   "editor.formatOnSave": true,
   "files.associations": {
     "**/renovate.json5": "jsonc"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/*.code-search": true,
+    "**/.yarn": true,
+    "**/lib": true
   }
 }
