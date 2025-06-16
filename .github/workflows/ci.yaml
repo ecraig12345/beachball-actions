@@ -23,7 +23,7 @@ jobs:
           node-version-file: .nvmrc
           cache: yarn
 
-      - run: yarn --frozen-lockfile --ignore-scripts
+      - run: yarn --immutable
 
       - run: yarn syncpack:check
       - run: yarn format:check
