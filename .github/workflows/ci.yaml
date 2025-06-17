@@ -27,7 +27,6 @@ jobs:
 
       - run: yarn syncpack:check
       - run: yarn format:check
-      - run: yarn beachball check
 
       - run: yarn build
       - run: yarn lint
@@ -79,16 +78,13 @@ jobs:
               core.info(`should-release returned shouldRelease: "${shouldRelease}"`);
             }
 
-  # Run the release in a separate job with release environment access.
+  # Run the release in a separate job with write permissions.
   # This approach requires re-running the build but skips the tests.
   release:
     needs: ci
     if: ${{ github.ref == 'refs/heads/main' && needs.ci.outputs.shouldCancel == 'no' }}
 
     runs-on: ubuntu-latest
-
-    # This environment contains secrets needed for releasing
-    environment: release
 
     permissions:
       contents: write
@@ -97,7 +93,6 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
-          persist-credentials: false
 
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
@@ -115,23 +110,6 @@ jobs:
         with:
           mode: output
           token: ${{ github.token }}
-
-      - name: Set git config
-        run: |
-          git config user.name "Elizabeth Craig"
-          git config user.email "elcraig@microsoft.com"
-          git remote set-url origin "https://$REPO_PAT@github.com/$GITHUB_REPOSITORY"
-        env:
-          REPO_PAT: ${{ secrets.REPO_PAT }}
-
-      - name: Publish common package to npm
-        if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
-        run: |
-          echo "::error::Release disabled"
-          exit 1
-          yarn beachball publish -b origin/main -y -n "$NPM_TOKEN"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Release actions
         if: ${{ steps.batchRuns.outputs.shouldCancel == 'no' }}
