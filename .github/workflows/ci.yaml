@@ -8,6 +8,8 @@ on:
 
 concurrency: ${{ github.ref }}-ci
 
+permissions: {}
+
 jobs:
   ci:
     outputs:
@@ -99,7 +101,7 @@ jobs:
           node-version-file: .nvmrc
           cache: yarn
 
-      - run: yarn --frozen-lockfile --ignore-scripts
+      - run: yarn --immutable
 
       - run: yarn build
       - run: yarn package
