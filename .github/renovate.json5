@@ -1,61 +1,46 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
     "github>microsoft/m365-renovate-config:beachball",
     "github>microsoft/m365-renovate-config:automergeTypes",
     "github>microsoft/m365-renovate-config:groupMore",
     "github>microsoft/m365-renovate-config:groupTypes",
     "github>microsoft/m365-renovate-config:keepFresh",
-    "github>microsoft/m365-renovate-config:restrictNode(16)"
+    "github>microsoft/m365-renovate-config:restrictNode(16)",
   ],
-  "ignorePresets": ["github>microsoft/m365-renovate-config:dependencyDashboardMajor"],
-
-  "labels": ["renovate"],
-  "reviewers": ["ecraig12345"],
-
-  "lockFileMaintenance": {
-    "automerge": true,
-    "platformAutomerge": true
+  ignorePresets: [
+    "github>microsoft/m365-renovate-config:dependencyDashboardMajor",
+  ],
+  labels: ["renovate"],
+  reviewers: ["ecraig12345"],
+  lockFileMaintenance: {
+    automerge: true,
+    platformAutomerge: true,
   },
-
-  "packageRules": [
-    // {
-    //   "matchPaths": ["*/**"],
-    //   "additionalBranchPrefix": "{{packageFileDir}}-",
-    //   "commitMessageSuffix": "({{packageFileDir}})",
-    //   "excludePackageNames": [
-    //     // update all action.yaml in single pull request
-    //     "@types/node"
-    //   ]
-    // },
-    // {
-    //   "matchDepTypes": ["devDependencies"],
-    //   "automerge": true,
-    //   "platformAutomerge": true
-    // },
+  packageRules: [
     {
-      "groupName": "github action packages",
-      "matchPackagePrefixes": ["@actions/"]
+      groupName: "github action packages",
+      matchPackageNames: ["@actions/{/,}**"],
     },
     {
-      "matchPackageNames": ["@types/node"],
-      "allowedVersions": "20.x"
+      matchPackageNames: ["@types/node"],
+      allowedVersions: "20.x",
     },
     {
-      // Group most updates
-      "groupName": "devDependencies",
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchDepTypes": ["devDependencies"],
-      "schedule": ["before 5am on the 5th and 20th day of the month"]
-    }
+      groupName: "devDependencies",
+      matchUpdateTypes: ["minor", "patch"],
+      matchDepTypes: ["devDependencies"],
+      schedule: ["before 5am on the 5th and 20th day of the month"],
+      matchPackageNames: ["*"],
+    },
   ],
-  "regexManagers": [
+  customManagers: [
     {
-      "fileMatch": ["^action.ya?ml$", "^.+/action.ya?ml$"],
-      "matchStrings": ["using: 'node(?<currentValue>\\d+)'"],
-      "depNameTemplate": "@types/node",
-      "datasourceTemplate": "npm"
-    }
-  ]
+      customType: "regex",
+      managerFilePatterns: ["/^action.ya?ml$/", "/^.+/action.ya?ml$/"],
+      matchStrings: ["using: 'node(?<currentValue>\\d+)'"],
+      depNameTemplate: "@types/node",
+      datasourceTemplate: "npm",
+    },
+  ],
 }
