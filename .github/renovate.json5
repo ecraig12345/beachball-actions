@@ -1,12 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>microsoft/m365-renovate-config:beachball",
     "github>microsoft/m365-renovate-config:automergeTypes",
     "github>microsoft/m365-renovate-config:groupMore",
     "github>microsoft/m365-renovate-config:groupTypes",
     "github>microsoft/m365-renovate-config:keepFresh",
-    "github>microsoft/m365-renovate-config:restrictNode(16)"
+    "github>microsoft/m365-renovate-config:restrictNode(20)"
   ],
   "ignorePresets": ["github>microsoft/m365-renovate-config:dependencyDashboardMajor"],
 
@@ -19,23 +18,9 @@
   },
 
   "packageRules": [
-    // {
-    //   "matchPaths": ["*/**"],
-    //   "additionalBranchPrefix": "{{packageFileDir}}-",
-    //   "commitMessageSuffix": "({{packageFileDir}})",
-    //   "excludePackageNames": [
-    //     // update all action.yaml in single pull request
-    //     "@types/node"
-    //   ]
-    // },
-    // {
-    //   "matchDepTypes": ["devDependencies"],
-    //   "automerge": true,
-    //   "platformAutomerge": true
-    // },
     {
       "groupName": "github action packages",
-      "matchPackagePrefixes": ["@actions/"]
+      "matchPackageNames": ["@actions/**"]
     },
     {
       "matchPackageNames": ["@types/node"],
@@ -43,16 +28,16 @@
     },
     {
       // Group most updates
-      "groupName": "devDependencies",
-      "matchPackagePatterns": ["*"],
+      "groupName": "dependencies",
+      "matchPackageNames": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
-      "matchDepTypes": ["devDependencies"],
       "schedule": ["before 5am on the 5th and 20th day of the month"]
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["^action.ya?ml$", "^.+/action.ya?ml$"],
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|\\/)action\\.ya?ml$/"],
       "matchStrings": ["using: 'node(?<currentValue>\\d+)'"],
       "depNameTemplate": "@types/node",
       "datasourceTemplate": "npm"

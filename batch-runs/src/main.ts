@@ -5,6 +5,7 @@ import {
   getEnumInput,
   onUnhandledError,
 } from 'beachball-actions-common';
+
 const main = async (): Promise<void> => {
   const mode = getEnumInput('mode', ['cancel', 'output'] as const, 'cancel');
   const token = core.getInput('token', { required: true });
