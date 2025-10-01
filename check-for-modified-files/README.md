@@ -17,3 +17,9 @@ jobs:
       # at the end of your workflow:
       - uses: ecraig12345/beachball-actions/check-for-modified-files@v2
 ```
+
+## Inputs
+
+| Name         | Type   | Description                                           |
+| ------------ | ------ | ----------------------------------------------------- |
+| `extraError` | string | Optional extra error message to display in the output |

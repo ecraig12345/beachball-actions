@@ -8,10 +8,10 @@ This monorepo contains GitHub Actions, mostly related to [Beachball](https://mic
 
 ### General
 
-| Name                                                  | Description                                                             |
-| ----------------------------------------------------- | ----------------------------------------------------------------------- |
-| [batch-runs](batch-runs)                              | Cancels this workflow run if any newer runs are pending for this branch |
-| [check-for-modified-files](check-for-modified-files]) | Fails the build if it modified any files                                |
+| Name                                                 | Description                                                             |
+| ---------------------------------------------------- | ----------------------------------------------------------------------- |
+| [batch-runs](batch-runs)                             | Cancels this workflow run if any newer runs are pending for this branch |
+| [check-for-modified-files](check-for-modified-files) | Fails the build if it modified any files                                |
 
 ### Beachball-specific
 

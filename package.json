@@ -41,7 +41,10 @@
     "typescript-eslint": "^8.34.1"
   },
   "workspaces": [
-    "*",
+    "batch-runs",
+    "check-for-modified-files",
+    "install-beachball",
+    "should-release",
     "packages/*"
   ],
   "lint-staged": {
