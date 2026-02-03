@@ -1,4 +1,6 @@
-# check-for-modified-files
+# This action is deprecated. Please use [`microsoft/beachball-actions`](https://github.com/microsoft/beachball-actions) instead.
+
+## check-for-modified-files
 
 Run this at the end of a workflow to determine if any files were modified, and if so, fail.
 

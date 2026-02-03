@@ -1,4 +1,6 @@
-# install-beachball
+# This action is deprecated. Please use [`microsoft/beachball-actions`](https://github.com/microsoft/beachball-actions) instead.
+
+## install-beachball
 
 Globally installs the version of [Beachball](https://microsoft.github.io/beachball) specified in the repo root `package.json`'s `devDependencies`.
 

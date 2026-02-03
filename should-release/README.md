@@ -1,4 +1,6 @@
-# should-release
+# This action is deprecated. Please use [`microsoft/beachball-actions`](https://github.com/microsoft/beachball-actions) instead.
+
+## should-release
 
 Determines whether a release workflow run is needed, and cancels it if not (unless `mode` is `output`). A run is needed if:
 

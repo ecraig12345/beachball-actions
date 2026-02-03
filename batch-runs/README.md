@@ -1,4 +1,6 @@
-# batch-runs
+# This action is deprecated. Please use [`microsoft/beachball-actions`](https://github.com/microsoft/beachball-actions) instead.
+
+## batch-runs
 
 Cancels this workflow run if any newer runs are pending for this branch (unless `mode` is `output`). This is meant to emulate the Azure DevOps `trigger: batch: true` option.
 
