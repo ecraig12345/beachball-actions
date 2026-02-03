@@ -10,6 +10,10 @@ import {
 } from 'beachball-actions-common';
 
 async function main() {
+  core.warning(
+    'ecraig12345/beachball-actions is deprecated. Please use microsoft/beachball-actions instead.',
+  );
+
   const batch = core.getBooleanInput('batch');
   const changeGlob = core.getInput('changeGlob');
   const mode = getEnumInput('mode', ['cancel', 'output'] as const, 'cancel');

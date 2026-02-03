@@ -8,9 +8,9 @@
     "package": "rimraf dist && ncc build --source-map --license licenses.txt src/main.ts",
     "test": "jest"
   },
-  "dependencies": {
+  "devDependencies": {
     "@actions/core": "^1.9.0",
     "@actions/glob": "^0.4.0",
-    "beachball-actions-common": "0.2.8"
+    "beachball-actions-common": "0.3.0"
   }
 }

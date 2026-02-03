@@ -44,14 +44,6 @@
     "*",
     "packages/*"
   ],
-  "beachball": {
-    "branch": "main",
-    "tag": "latest",
-    "ignorePatterns": [
-      "**/*.test.ts",
-      "**/jest.config.js"
-    ]
-  },
   "lint-staged": {
     "*.!(js|ts)": [
       "prettier --write"
