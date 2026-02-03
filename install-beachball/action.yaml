@@ -6,6 +6,10 @@ runs:
     - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
       with:
         script: |
+          core.warning(
+            'ecraig12345/beachball-actions is deprecated. Please use microsoft/beachball-actions instead.',
+          );
+
           const beachballVersion = require('./package.json').devDependencies.beachball;
           if (beachballVersion) {
             console.log(`Using beachball@${beachballVersion}...`)

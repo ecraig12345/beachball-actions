@@ -12,6 +12,8 @@ runs:
       env:
         EXTRA_ERROR: ${{ inputs.extraError }}
       run: |
+        echo "::warning::ecraig12345/beachball-actions is deprecated. Please use microsoft/beachball-actions instead."
+
         statusOutput="$(git status -s)"
         if [ ! -z "$statusOutput" ]; then
           echo "::error::This build resulted in file modifications that have not been checked in."
